@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { studentPortalAPI } from '../api/services';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
 export default function StudentDashboard() {
-  const { user, logout } = useAuth();
+  const {  logout } = useAuth();
   const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState('overview');
@@ -15,51 +15,53 @@ export default function StudentDashboard() {
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [marks, setMarks] = useState([]);
-  const [results, setResults] = useState(null);
-  const [performance, setPerformance] = useState(null);
+const [results, setResults] = useState(null);
+const [performance, setPerformance] = useState(null);
 
-  // Filters for Marks & Results
-  const [selectedExam, setSelectedExam] = useState('');
-  const [selectedYearFilter, setSelectedYearFilter] = useState('');
-
+// Filters for Marks & Results
+const [selectedExam, setSelectedExam] = useState('');
+const [selectedYearFilter, setSelectedYearFilter] = useState('');
   const [loading, setLoading] = useState(true);
   const [pdfDownloading, setPdfDownloading] = useState(false);
+const loadAllStudentData = useCallback(async () => {
+  setLoading(true);
+
+  try {
+    const [profRes, attRes, perfRes, marksRes, resultsRes] = await Promise.all([
+      studentPortalAPI.getMyProfile(),
+      studentPortalAPI.getMyAttendance(),
+      studentPortalAPI.getMyPerformance(),
+      studentPortalAPI.getMyMarks(),
+      studentPortalAPI.getMyResults()
+    ]);
+
+    setProfile(profRes.data);
+    setAttendance(attRes.data);
+    setPerformance(perfRes.data);
+    setMarks(marksRes.data);
+    setResults(resultsRes.data);
+  } catch (err) {
+    if (err.response?.status === 401 || err.response?.status === 403) {
+      toast.error('Session expired or unauthorized. Please log in again.');
+      logout();
+      navigate('/login');
+    } else {
+      toast.error('Failed to load student data. Please retry.');
+    }
+  } finally {
+    setLoading(false);
+  }
+}, [logout, navigate]);
 
   useEffect(() => {
-    loadAllStudentData();
-  }, []);
+  loadAllStudentData();
+}, [loadAllStudentData]);
 
   useEffect(() => {
     loadMonthlyAttendance(selectedYear, selectedMonth);
   }, [selectedYear, selectedMonth]);
 
-  const loadAllStudentData = async () => {
-    setLoading(true);
-    try {
-      const [profRes, attRes, perfRes, marksRes, resultsRes] = await Promise.all([
-        studentPortalAPI.getMyProfile(),
-        studentPortalAPI.getMyAttendance(),
-        studentPortalAPI.getMyPerformance(),
-        studentPortalAPI.getMyMarks(),
-        studentPortalAPI.getMyResults()
-      ]);
-      setProfile(profRes.data);
-      setAttendance(attRes.data);
-      setPerformance(perfRes.data);
-      setMarks(marksRes.data);
-      setResults(resultsRes.data);
-    } catch (err) {
-      if (err.response?.status === 401 || err.response?.status === 403) {
-        toast.error('Session expired or unauthorized. Please log in again.');
-        logout();
-        navigate('/login');
-      } else {
-        toast.error('Failed to load student data. Please retry.');
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+  
 
   const loadMonthlyAttendance = async (year, month) => {
     try {

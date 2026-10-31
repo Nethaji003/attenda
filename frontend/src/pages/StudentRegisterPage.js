@@ -1531,7 +1531,7 @@ export default function StudentRegisterPage() {
                   <div style={{ textAlign: 'center', marginBottom: 4 }}>
                     <img
                       src={editPhotoPreview}
-                      alt="Current student photo"
+                      alt="Student"
                       style={{ width: 64, height: 64, borderRadius: '50%', objectFit: 'cover', border: '3px solid #673ab7' }}
                     />
                   </div>

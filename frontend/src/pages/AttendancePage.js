@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { attendanceAPI } from '../api/services';
 import { toast } from 'react-toastify';
@@ -22,22 +22,31 @@ export default function AttendancePage() {
   const [saving, setSaving] = useState(false);
   const [showSmsResult, setShowSmsResult] = useState(null);
 
-  const loadSheet = async () => {
-    if (!std || !sec || !date) return;
-    setLoading(true);
-    setSearch('');
-    try {
-      const res = await attendanceAPI.getSheet(std, sec, date);
-      setSheet(res.data);
-      // Build statuses map (default to PRESENT for new records)
-      const map = {};
-      res.data.forEach(s => { map[s.studentId] = s.status || 'PRESENT'; });
-      setStatuses(map);
-    } catch { toast.error('Failed to load attendance sheet'); }
-    finally { setLoading(false); }
-  };
+  const loadSheet = useCallback(async () => {
+  if (!std || !sec || !date) return;
 
-  useEffect(() => { loadSheet(); }, [std, sec, date, loadSheet]);
+  setLoading(true);
+  setSearch('');
+
+  try {
+    const res = await attendanceAPI.getSheet(std, sec, date);
+    setSheet(res.data);
+
+    const map = {};
+    res.data.forEach(s => {
+      map[s.studentId] = s.status || 'PRESENT';
+    });
+
+    setStatuses(map);
+  } catch {
+    toast.error('Failed to load attendance sheet');
+  } finally {
+    setLoading(false);
+  }
+}, [std, sec, date]);
+  useEffect(() => {
+  loadSheet();
+}, [loadSheet]);
 
   const toggle = (studentId, status) => {
     setStatuses(prev => ({ ...prev, [studentId]: status }));
