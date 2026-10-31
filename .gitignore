@@ -1,0 +1,33 @@
+
+# React
+**/node_modules/
+**/build/
+**/dist/
+**/.env
+**/.env.*
+!**/.env.example
+
+# Java Spring Boot
+**/target/
+*.class
+**/application.properties
+**/application-*.properties
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Uploaded student photos
+**/uploads/
+
+# Local database files and backups
+*.sql
+*.sql.gz
+*.dump
+
+# Secret files
+*.pem
+*.key
