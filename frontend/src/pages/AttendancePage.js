@@ -37,7 +37,7 @@ export default function AttendancePage() {
     finally { setLoading(false); }
   };
 
-  useEffect(() => { loadSheet(); }, [std, sec, date]);
+  useEffect(() => { loadSheet(); }, [std, sec, date, loadSheet]);
 
   const toggle = (studentId, status) => {
     setStatuses(prev => ({ ...prev, [studentId]: status }));
