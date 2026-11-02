@@ -54,6 +54,6 @@ public class Attendance {
     }
 
     public enum AttendanceStatus {
-        PRESENT, ABSENT
+        PRESENT, ABSENT, LEAVE
     }
 }
