@@ -4,341 +4,278 @@ import { useAuth } from '../context/AuthContext';
 import { authAPI } from '../api/services';
 import { toast } from 'react-toastify';
 
-/* ─── LEFT EDUCATIONAL DECORATION (Books, Open Notebook, Graduation Cap, School Supplies - Pure Vector Art, No Words) ─── */
+/* ─── SHARED DECORATIVE STARS COMPONENT ─── */
+function DecorativeStars() {
+  return (
+    <div className="login-decor-stars-row" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2 Q12 12 22 12 Q12 12 12 22 Q12 12 2 12 Q12 12 12 2 Z" fill="#F5D76E" />
+      </svg>
+      <span className="login-decor-dot" style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(212,175,55,0.7)', display: 'inline-block' }}></span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M12 4 Q12 12 20 12 Q12 12 12 20 Q12 12 4 12 Q12 12 12 4 Z" fill="#D4AF37" />
+      </svg>
+      <span className="login-decor-dot" style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(212,175,55,0.7)', display: 'inline-block' }}></span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2 Q12 12 22 12 Q12 12 12 22 Q12 12 2 12 Q12 12 12 2 Z" fill="#FFF2B2" />
+      </svg>
+    </div>
+  );
+}
+
+/* ─── LEFT EDUCATIONAL DECORATION (Separate Individual Objects, No Words) ─── */
 function LeftEducationalDecoration() {
   return (
-    <aside className="login-decor-side login-decor-left" aria-label="Educational illustration">
-      <svg
-        width="100%"
-        height="310"
-        viewBox="0 0 320 310"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ display: 'block', margin: '0 auto', filter: 'drop-shadow(0 10px 28px rgba(0,0,0,0.65))' }}
-      >
-        <defs>
-          <linearGradient id="goldMetallicLeft" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFF2B2" />
-            <stop offset="35%" stopColor="#D4AF37" />
-            <stop offset="70%" stopColor="#AA771C" />
-            <stop offset="100%" stopColor="#F5D76E" />
-          </linearGradient>
+    <aside className="login-decor-side login-decor-left" aria-label="Educational illustrations">
+      {/* 1. Separate Books Card */}
+      <div className="login-decor-card" title="Academic Volumes">
+        <svg width="240" height="76" viewBox="0 0 240 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldBookGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFF2B2" />
+              <stop offset="40%" stopColor="#D4AF37" />
+              <stop offset="80%" stopColor="#AA771C" />
+              <stop offset="100%" stopColor="#F5D76E" />
+            </linearGradient>
+            <linearGradient id="bookCoverA" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#221E18" />
+              <stop offset="50%" stopColor="#14120F" />
+              <stop offset="100%" stopColor="#2C2720" />
+            </linearGradient>
+            <linearGradient id="bookCoverB" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#1C2024" />
+              <stop offset="50%" stopColor="#101316" />
+              <stop offset="100%" stopColor="#252A30" />
+            </linearGradient>
+            <linearGradient id="bookPagesGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#E2D4B7" />
+              <stop offset="50%" stopColor="#FAF4E6" />
+              <stop offset="100%" stopColor="#EADCC2" />
+            </linearGradient>
+          </defs>
 
-          <linearGradient id="bookCover1Left" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#24201A" />
-            <stop offset="50%" stopColor="#151310" />
-            <stop offset="100%" stopColor="#2E2820" />
-          </linearGradient>
+          {/* Bottom Book */}
+          <g transform="translate(10, 36)">
+            <ellipse cx="110" cy="36" rx="105" ry="5" fill="rgba(0,0,0,0.5)" />
+            <rect x="16" y="8" width="194" height="22" rx="2" fill="url(#bookPagesGrad)" stroke="#B39B72" strokeWidth="0.8" />
+            <path d="M 10 30 L 206 30 C 208 30 210 28 210 26 L 210 4 C 210 2 208 0 206 0 L 10 0 C 4 0 0 5 0 15 C 0 25 4 30 10 30 Z" fill="url(#bookCoverA)" stroke="url(#goldBookGrad)" strokeWidth="1.4" />
+            <rect x="22" y="0" width="4" height="30" fill="url(#goldBookGrad)" />
+            <rect x="32" y="0" width="2" height="30" fill="url(#goldBookGrad)" />
+            <rect x="170" y="0" width="2" height="30" fill="url(#goldBookGrad)" />
+            <rect x="180" y="0" width="4" height="30" fill="url(#goldBookGrad)" />
+            <polygon points="106,15 111,9 116,15 111,21" fill="url(#goldBookGrad)" />
+          </g>
 
-          <linearGradient id="bookCover2Left" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#1F2326" />
-            <stop offset="50%" stopColor="#121518" />
-            <stop offset="100%" stopColor="#2B3035" />
-          </linearGradient>
+          {/* Top Book */}
+          <g transform="translate(24, 6)">
+            <rect x="14" y="6" width="172" height="20" rx="2" fill="url(#bookPagesGrad)" stroke="#B39B72" strokeWidth="0.8" />
+            <path d="M 8 26 L 182 26 C 184 26 186 24 186 22 L 186 4 C 186 2 184 0 182 0 L 8 0 C 3 0 0 4 0 13 C 0 22 3 26 8 26 Z" fill="url(#bookCoverB)" stroke="url(#goldBookGrad)" strokeWidth="1.4" />
+            <rect x="18" y="0" width="3" height="26" fill="url(#goldBookGrad)" />
+            <rect x="156" y="0" width="3" height="26" fill="url(#goldBookGrad)" />
+            <circle cx="93" cy="13" r="3.5" fill="none" stroke="url(#goldBookGrad)" strokeWidth="1" />
+            <path d="M 124 26 Q 126 38 120 48 L 126 45 L 132 48 Q 128 38 126 26 Z" fill="#D4AF37" />
+          </g>
+        </svg>
+      </div>
 
-          <linearGradient id="bookCover3Left" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#261A1D" />
-            <stop offset="50%" stopColor="#160E10" />
-            <stop offset="100%" stopColor="#332226" />
-          </linearGradient>
+      <DecorativeStars />
 
-          <linearGradient id="pagesGradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#E2D4B7" />
-            <stop offset="50%" stopColor="#FAF4E6" />
-            <stop offset="100%" stopColor="#EADCC2" />
-          </linearGradient>
+      {/* 2. Separate Graduation Cap Card */}
+      <div className="login-decor-card" title="Scholastic Achievement">
+        <svg width="220" height="74" viewBox="0 0 220 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldCapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFF2B2" />
+              <stop offset="50%" stopColor="#D4AF37" />
+              <stop offset="100%" stopColor="#AA771C" />
+            </linearGradient>
+          </defs>
+          <g transform="translate(25, 4)">
+            {/* Skull base */}
+            <path d="M 52 38 Q 85 49 118 38 L 118 47 Q 85 58 52 47 Z" fill="#181818" stroke="#D4AF37" strokeWidth="1.2" />
+            {/* Diamond top plate */}
+            <polygon points="85,6 150,26 85,46 20,26" fill="#121212" stroke="url(#goldCapGrad)" strokeWidth="2" />
+            {/* Center button */}
+            <circle cx="85" cy="26" r="4" fill="url(#goldCapGrad)" />
+            {/* Flowing tassel */}
+            <path d="M 85 26 Q 120 28 132 42 L 136 58" stroke="#F5D76E" strokeWidth="2" fill="none" strokeLinecap="round" />
+            <rect x="133" y="56" width="6" height="3" rx="1" fill="#D4AF37" />
+            <path d="M 133 59 L 130 70 L 142 70 L 139 59 Z" fill="url(#goldCapGrad)" />
+          </g>
+        </svg>
+      </div>
 
-          <filter id="goldGlowSoftLeft" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
+      <DecorativeStars />
 
-        {/* Ambient golden aura behind stack */}
-        <circle cx="160" cy="165" r="95" fill="rgba(212,175,55,0.07)" />
+      {/* 3. Separate Open Notebook Card */}
+      <div className="login-decor-card" title="Open Notebook">
+        <svg width="220" height="70" viewBox="0 0 220 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(18, 6)">
+            {/* Back cover */}
+            <path d="M 10 44 Q 92 48 174 44 L 178 8 Q 92 12 10 8 Z" fill="#151515" stroke="#D4AF37" strokeWidth="1.2" />
+            {/* Left blank page with delicate gold margin */}
+            <path d="M 12 42 Q 54 38 92 41 L 92 6 Q 54 3 12 6 Z" fill="#FDFBF4" />
+            <path d="M 18 38 Q 54 35 86 37 L 86 10 Q 54 7 18 10 Z" fill="none" stroke="rgba(212,175,55,0.4)" strokeWidth="0.8" />
+            {/* Right blank page with delicate gold margin */}
+            <path d="M 96 41 Q 134 38 176 42 L 176 6 Q 134 3 96 6 Z" fill="#F8F3E5" />
+            <path d="M 102 37 Q 134 35 170 38 L 170 10 Q 134 7 102 10 Z" fill="none" stroke="rgba(212,175,55,0.4)" strokeWidth="0.8" />
+            {/* Center stitched binding */}
+            <line x1="94" y1="4" x2="94" y2="43" stroke="#AA771C" strokeWidth="2" />
+            {/* Gold corner ornaments */}
+            <polygon points="12,6 22,6 12,16" fill="#D4AF37" />
+            <polygon points="176,6 166,6 176,16" fill="#D4AF37" />
+          </g>
+        </svg>
+      </div>
 
-        {/* ── 1. BOTTOM BOOK (Large Gilded Hardcover Tome) ── */}
-        <g transform="translate(30, 230)">
-          {/* Ground shadow */}
-          <ellipse cx="130" cy="46" rx="125" ry="12" fill="rgba(0,0,0,0.65)" />
-          {/* Paper pages block */}
-          <rect x="20" y="10" width="232" height="28" rx="3" fill="url(#pagesGradLeft)" stroke="#B39B72" strokeWidth="1" />
-          {/* Fine page gilding ridges */}
-          <line x1="244" y1="15" x2="252" y2="15" stroke="#AA771C" strokeWidth="1" />
-          <line x1="244" y1="21" x2="252" y2="21" stroke="#AA771C" strokeWidth="1" />
-          <line x1="244" y1="27" x2="252" y2="27" stroke="#AA771C" strokeWidth="1" />
-          <line x1="244" y1="33" x2="252" y2="33" stroke="#AA771C" strokeWidth="1" />
-          {/* Spine and outer binding */}
-          <path d="M 12 38 L 250 38 C 252 38 254 36 254 33 L 254 5 C 254 2 252 0 250 0 L 12 0 C 5 0 0 7 0 19 C 0 31 5 38 12 38 Z" fill="url(#bookCover1Left)" stroke="url(#goldMetallicLeft)" strokeWidth="1.6" />
-          {/* Gold embossed ornamental spine ribs (Pure geometric art, NO text) */}
-          <rect x="26" y="0" width="5" height="38" fill="url(#goldMetallicLeft)" />
-          <rect x="38" y="0" width="2" height="38" fill="url(#goldMetallicLeft)" />
-          <rect x="195" y="0" width="2" height="38" fill="url(#goldMetallicLeft)" />
-          <rect x="207" y="0" width="5" height="38" fill="url(#goldMetallicLeft)" />
-          {/* Central gold filigree diamond motif on spine */}
-          <polygon points="120,19 126,11 132,19 126,27" fill="url(#goldMetallicLeft)" />
-          <polygon points="108,19 112,14 116,19 112,24" fill="url(#goldMetallicLeft)" />
-          <polygon points="136,19 140,14 144,19 140,24" fill="url(#goldMetallicLeft)" />
-        </g>
+      <DecorativeStars />
 
-        {/* ── 2. MIDDLE BOOK (Academic Tome with Silk Bookmark) ── */}
-        <g transform="translate(44, 185)">
-          {/* Pages block */}
-          <rect x="18" y="8" width="206" height="25" rx="3" fill="url(#pagesGradLeft)" stroke="#B39B72" strokeWidth="1" />
-          {/* Cover and curved spine */}
-          <path d="M 10 33 L 222 33 C 224 33 226 31 226 28 L 226 4 C 226 1 224 0 222 0 L 10 0 C 4 0 0 6 0 16.5 C 0 27 4 33 10 33 Z" fill="url(#bookCover2Left)" stroke="url(#goldMetallicLeft)" strokeWidth="1.5" />
-          {/* Spine gold filigree bars */}
-          <rect x="22" y="0" width="4" height="33" fill="url(#goldMetallicLeft)" />
-          <rect x="32" y="0" width="2" height="33" fill="url(#goldMetallicLeft)" />
-          <rect x="184" y="0" width="2" height="33" fill="url(#goldMetallicLeft)" />
-          <rect x="194" y="0" width="4" height="33" fill="url(#goldMetallicLeft)" />
-          {/* Spine center emblem (pure geometric shapes, no letters) */}
-          <circle cx="113" cy="16.5" r="5" fill="none" stroke="url(#goldMetallicLeft)" strokeWidth="1.2" />
-          <circle cx="113" cy="16.5" r="2" fill="url(#goldMetallicLeft)" />
-          {/* Hanging silk bookmark ribbon */}
-          <path d="M 148 33 Q 150 48 144 64 L 152 60 L 160 64 Q 154 48 152 33 Z" fill="#D4AF37" />
-        </g>
-
-        {/* ── 3. TOP HARDBOUND JOURNAL (Dark Obsidian with Gold Corner Guards) ── */}
-        <g transform="translate(56, 142)">
-          {/* Pages */}
-          <rect x="16" y="6" width="184" height="23" rx="2" fill="url(#pagesGradLeft)" stroke="#B39B72" strokeWidth="1" />
-          {/* Cover */}
-          <path d="M 10 29 L 198 29 C 200 29 202 27 202 25 L 202 4 C 202 2 200 0 198 0 L 10 0 C 4 0 0 5 0 14.5 C 0 24 4 29 10 29 Z" fill="url(#bookCover3Left)" stroke="url(#goldMetallicLeft)" strokeWidth="1.5" />
-          {/* Spine accents */}
-          <rect x="20" y="0" width="3" height="29" fill="url(#goldMetallicLeft)" />
-          <rect x="178" y="0" width="3" height="29" fill="url(#goldMetallicLeft)" />
-          {/* Geometric gold spine flourish */}
-          <polygon points="101,14.5 106,9 111,14.5 106,20" fill="url(#goldMetallicLeft)" />
-        </g>
-
-        {/* ── 4. OPEN NOTEBOOK (Clean Parchment, Gold Frame, STRICTLY NO WORDS) ── */}
-        <g transform="translate(48, 92)">
-          {/* Notebook back base */}
-          <path d="M 12 40 Q 112 45 216 40 L 220 4 Q 112 8 12 4 Z" fill="#141414" stroke="url(#goldMetallicLeft)" strokeWidth="1.3" />
-          {/* Left blank page with delicate gold margin border */}
-          <path d="M 14 38 Q 66 34 114 37 L 114 3 Q 66 0 14 3 Z" fill="#FDFBF4" />
-          <path d="M 22 34 Q 66 31 106 33 L 106 7 Q 66 4 22 7 Z" fill="none" stroke="rgba(212, 175, 55, 0.4)" strokeWidth="0.8" />
-          {/* Right blank page with delicate gold margin border */}
-          <path d="M 118 37 Q 166 34 218 38 L 218 3 Q 166 0 118 3 Z" fill="#F8F3E5" />
-          <path d="M 126 33 Q 166 31 210 34 L 210 7 Q 166 4 126 7 Z" fill="none" stroke="rgba(212, 175, 55, 0.4)" strokeWidth="0.8" />
-          {/* Center spine stitching */}
-          <line x1="116" y1="1" x2="116" y2="39" stroke="#AA771C" strokeWidth="2.5" />
-          {/* Elegant gold corner filigree on pages */}
-          <polygon points="14,3 26,3 14,15" fill="#D4AF37" />
-          <polygon points="218,3 206,3 218,15" fill="#D4AF37" />
-        </g>
-
-        {/* ── 5. GRADUATION MORTARBOARD CAP (Golden Tassel, Diamond Peak) ── */}
-        <g transform="translate(132, 12)">
-          {/* Cap skull base */}
-          <path d="M 45 42 Q 65 53 85 42 L 85 53 Q 65 65 45 53 Z" fill="#181818" stroke="#D4AF37" strokeWidth="1.2" />
-          {/* Cap diamond top plate */}
-          <polygon points="65,16 118,34 65,52 12,34" fill="#131313" stroke="url(#goldMetallicLeft)" strokeWidth="2.2" filter="url(#goldGlowSoftLeft)" />
-          {/* Center gold button rivet */}
-          <circle cx="65" cy="34" r="4.5" fill="url(#goldMetallicLeft)" />
-          {/* Flowing golden tassel cord */}
-          <path d="M 65 34 Q 94 37 104 55 L 108 75" stroke="#F5D76E" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-          {/* Tassel brass ring & fringe brush */}
-          <rect x="105" y="73" width="7" height="3" rx="1" fill="#D4AF37" />
-          <path d="M 105 76 L 101 92 L 115 92 L 112 76 Z" fill="url(#goldMetallicLeft)" />
-        </g>
-
-        {/* ── 6. DIPLOMA SCROLL WITH GOLD SEAL ── */}
-        <g transform="translate(24, 115) rotate(-16)">
-          {/* Rolled parchment tube */}
-          <rect x="0" y="0" width="74" height="20" rx="4" fill="url(#pagesGradLeft)" stroke="#B39B72" strokeWidth="1" />
-          {/* Inner roll spiral curl */}
-          <ellipse cx="72" cy="10" rx="3.5" ry="9" fill="#D9C7A1" stroke="#9E875C" strokeWidth="1" />
-          {/* Imperial gold ribbon band and wax seal */}
-          <rect x="31" y="-1" width="11" height="22" fill="#AA771C" />
-          <circle cx="36.5" cy="10" r="7" fill="url(#goldMetallicLeft)" stroke="#121212" strokeWidth="1" />
-          <path d="M 34 17 L 30 29 L 37 26 L 44 29 L 41 17" fill="#AA771C" />
-        </g>
-
-        {/* ── 7. VINTAGE QUILL & INKWELL ── */}
-        <g transform="translate(230, 52)">
-          {/* Inkwell pot */}
-          <path d="M 20 80 L 40 80 L 44 98 L 16 98 Z" fill="#1A1A1A" stroke="url(#goldMetallicLeft)" strokeWidth="1.3" />
-          <ellipse cx="30" cy="80" rx="9" ry="3.5" fill="#0A0A0A" stroke="#D4AF37" strokeWidth="1" />
-          {/* Quill feather plume */}
-          <path d="M 30 80 Q 42 42 70 8 Q 54 26 36 58 Z" fill="#F5D76E" stroke="#AA771C" strokeWidth="1" />
-          <path d="M 30 80 Q 38 62 56 28" stroke="#121212" strokeWidth="1.2" />
-        </g>
-
-        {/* Ambient floating gold sparkles */}
-        <path d="M 32 55 Q 36 55 36 51 Q 36 55 40 55 Q 36 55 36 59 Q 36 55 32 55 Z" fill="#F5D76E" />
-        <path d="M 285 145 Q 290 145 290 140 Q 290 145 295 145 Q 290 145 290 150 Q 290 145 285 145 Z" fill="#D4AF37" />
-        <path d="M 120 10 Q 123 10 123 7 Q 123 10 126 10 Q 123 10 123 13 Q 123 10 120 10 Z" fill="#FFF2B2" />
-      </svg>
+      {/* 4. Separate Stationery (Diploma Scroll & Quill) Card */}
+      <div className="login-decor-card" title="Diploma & Quill">
+        <svg width="220" height="68" viewBox="0 0 220 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Rolled Diploma Scroll */}
+          <g transform="translate(18, 32) rotate(-10)">
+            <rect x="0" y="0" width="82" height="18" rx="4" fill="#FAF4E6" stroke="#B39B72" strokeWidth="1" />
+            <ellipse cx="80" cy="9" rx="3.5" ry="8" fill="#D9C7A1" stroke="#9E875C" strokeWidth="1" />
+            <rect x="36" y="-1" width="10" height="20" fill="#AA771C" />
+            <circle cx="41" cy="9" r="6" fill="#D4AF37" stroke="#121212" strokeWidth="1" />
+            <path d="M 39 15 L 36 24 L 41 22 L 46 24 L 43 15" fill="#AA771C" />
+          </g>
+          {/* Vintage Quill & Inkwell */}
+          <g transform="translate(138, 8)">
+            <path d="M 14 36 L 28 36 L 31 52 L 11 52 Z" fill="#1C1C1C" stroke="#D4AF37" strokeWidth="1.2" />
+            <ellipse cx="21" cy="36" rx="7" ry="2.5" fill="#0A0A0A" stroke="#D4AF37" strokeWidth="0.8" />
+            <path d="M 21 36 Q 30 14 52 -4 Q 38 8 26 24 Z" fill="#F5D76E" stroke="#AA771C" strokeWidth="1" />
+            <path d="M 21 36 Q 26 26 40 8" stroke="#121212" strokeWidth="1" />
+          </g>
+        </svg>
+      </div>
     </aside>
   );
 }
 
-/* ─── RIGHT EDUCATIONAL DECORATION (Pencils, Pens, Pencil Holder, Notebook, Ruler - Pure Vector Art, No Words) ─── */
+/* ─── RIGHT EDUCATIONAL DECORATION (Separate Individual Objects, No Words) ─── */
 function RightEducationalDecoration() {
   return (
-    <aside className="login-decor-side login-decor-right" aria-label="Educational stationery illustration">
-      <svg
-        width="100%"
-        height="310"
-        viewBox="0 0 320 310"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ display: 'block', margin: '0 auto', filter: 'drop-shadow(0 10px 28px rgba(0,0,0,0.65))' }}
-      >
-        <defs>
-          <linearGradient id="goldStationeryRight" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFF2B2" />
-            <stop offset="40%" stopColor="#D4AF37" />
-            <stop offset="80%" stopColor="#C59B27" />
-            <stop offset="100%" stopColor="#F5D76E" />
-          </linearGradient>
+    <aside className="login-decor-side login-decor-right" aria-label="Stationery illustrations">
+      {/* 1. Separate Pencil Holder Card */}
+      <div className="login-decor-card" title="Stationery Desk Holder">
+        <svg width="220" height="82" viewBox="0 0 220 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="cupGradSep" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#222" />
+              <stop offset="50%" stopColor="#141414" />
+              <stop offset="100%" stopColor="#2A2A2A" />
+            </linearGradient>
+            <linearGradient id="goldCupSep" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFF2B2" />
+              <stop offset="50%" stopColor="#D4AF37" />
+              <stop offset="100%" stopColor="#AA771C" />
+            </linearGradient>
+          </defs>
+          <g transform="translate(75, 12)">
+            {/* Holder shadow */}
+            <ellipse cx="35" cy="62" rx="36" ry="6" fill="rgba(0,0,0,0.5)" />
+            {/* Tapered cup body */}
+            <path d="M 8 58 L 2 10 C 2 10 35 4 68 10 L 62 58 C 62 58 35 63 8 58 Z" fill="url(#cupGradSep)" stroke="url(#goldCupSep)" strokeWidth="1.4" />
+            {/* Crisscross gold wire lattice */}
+            <path d="M 12 18 L 58 52 M 58 18 L 12 52 M 8 35 L 62 35" stroke="rgba(212,175,55,0.3)" strokeWidth="1" />
+            {/* Polished rim */}
+            <ellipse cx="35" cy="10" rx="33" ry="6" fill="#181818" stroke="url(#goldCupSep)" strokeWidth="1.6" />
+            {/* Base band */}
+            <ellipse cx="35" cy="57" rx="27" ry="4" fill="none" stroke="url(#goldCupSep)" strokeWidth="1.2" />
+          </g>
+        </svg>
+      </div>
 
-          <linearGradient id="cupGradRight" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#1E1E1E" />
-            <stop offset="50%" stopColor="#141414" />
-            <stop offset="100%" stopColor="#2A2A2A" />
-          </linearGradient>
+      <DecorativeStars />
 
-          <linearGradient id="pencilYellowRight" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#E5C048" />
-            <stop offset="50%" stopColor="#F5D76E" />
-            <stop offset="100%" stopColor="#C59B27" />
-          </linearGradient>
-        </defs>
+      {/* 2. Separate Luxury Fountain Pen Card */}
+      <div className="login-decor-card" title="Luxury Fountain Pen">
+        <svg width="220" height="65" viewBox="0 0 220 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(30, 24) rotate(-18)">
+            {/* Pen barrel */}
+            <rect x="0" y="0" width="130" height="10" rx="2" fill="#151515" stroke="#D4AF37" strokeWidth="1" />
+            {/* Gold cap ring */}
+            <rect x="35" y="-1.5" width="6" height="13" fill="#D4AF37" />
+            {/* Gold pocket clip */}
+            <path d="M 2 10 L 2 13 L 42 13 L 42 10" stroke="#F5D76E" strokeWidth="1.6" fill="none" />
+            {/* 18K engraved nib */}
+            <path d="M 130 1 L 152 5 L 130 9 Z" fill="#D4AF37" stroke="#AA771C" strokeWidth="0.8" />
+            <circle cx="140" cy="5" r="1" fill="#121212" />
+            <line x1="140" y1="5" x2="152" y2="5" stroke="#121212" strokeWidth="0.6" />
+          </g>
+        </svg>
+      </div>
 
-        {/* Ambient golden aura behind stationery */}
-        <circle cx="160" cy="165" r="95" fill="rgba(212,175,55,0.07)" />
+      <DecorativeStars />
 
-        {/* ── 1. STANDING SPIRAL NOTEBOOK (Right Background, Geometric Emblem, NO WORDS) ── */}
-        <g transform="translate(190, 75)">
-          {/* Notebook cover base */}
-          <rect x="0" y="0" width="90" height="150" rx="7" fill="#141414" stroke="url(#goldStationeryRight)" strokeWidth="1.6" />
-          {/* Inset cover panel */}
-          <rect x="8" y="10" width="74" height="130" rx="3" fill="#1A1A1A" />
-          {/* Subtle gold geometric grid frame */}
-          <rect x="14" y="18" width="62" height="114" fill="none" stroke="rgba(212,175,55,0.3)" strokeWidth="1" />
-          <line x1="14" y1="42" x2="76" y2="42" stroke="rgba(212,175,55,0.2)" strokeWidth="1" />
-          <line x1="14" y1="68" x2="76" y2="68" stroke="rgba(212,175,55,0.2)" strokeWidth="1" />
-          <line x1="14" y1="94" x2="76" y2="94" stroke="rgba(212,175,55,0.2)" strokeWidth="1" />
-          {/* Central gold geometric star crest (STRICTLY NO LETTERS) */}
-          <circle cx="45" cy="68" r="16" fill="#141414" stroke="url(#goldStationeryRight)" strokeWidth="1.3" />
-          <polygon points="45,56 49,64 57,68 49,72 45,80 41,72 33,68 41,64" fill="#F5D76E" />
-          {/* Golden twin-wire spiral coils along spine */}
-          {[16, 28, 40, 52, 64, 76, 88, 100, 112, 124, 136].map((yPos) => (
-            <ellipse key={yPos} cx="0" cy={yPos} rx="4.5" ry="2.2" fill="url(#goldStationeryRight)" stroke="#080808" strokeWidth="1" />
-          ))}
-        </g>
+      {/* 3. Separate Academic Drawing Pencils Card */}
+      <div className="login-decor-card" title="Drafting & Drawing Pencils">
+        <svg width="220" height="65" viewBox="0 0 220 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Top Yellow Hexagonal Pencil */}
+          <g transform="translate(25, 14)">
+            <rect x="30" y="0" width="120" height="8" fill="#E5C048" stroke="#AA771C" strokeWidth="0.8" />
+            <rect x="15" y="-0.5" width="15" height="9" fill="#D4AF37" />
+            <rect x="5" y="0.5" width="10" height="7" rx="2" fill="#D97706" />
+            <polygon points="150,0 150,8 166,4" fill="#E2D4B7" stroke="#AA771C" strokeWidth="0.6" />
+            <polygon points="160,2.5 160,5.5 166,4" fill="#121212" />
+          </g>
+          {/* Bottom Mechanical Drafting Pencil */}
+          <g transform="translate(35, 36)">
+            <rect x="25" y="0" width="115" height="7" rx="1" fill="#242424" stroke="#D4AF37" strokeWidth="0.8" />
+            <rect x="105" y="-1" width="22" height="9" fill="#D4AF37" />
+            <polygon points="140,0 140,7 149,3.5" fill="#D4AF37" />
+            <line x1="149" y1="3.5" x2="156" y2="3.5" stroke="#FFFFFF" strokeWidth="1" />
+          </g>
+        </svg>
+      </div>
 
-        {/* ── 2. METRIC DRAFTING RULER (Tick Marks Only, NO WORDS, NO NUMBERS) ── */}
-        <g transform="translate(65, 50) rotate(-16)">
-          {/* Ruler body */}
-          <rect x="0" y="0" width="24" height="175" rx="3" fill="#1E1E1E" stroke="url(#goldStationeryRight)" strokeWidth="1.3" />
-          {/* Measurement tick marks only (NO WORDS, NO NUMBERS) */}
-          {[12, 20, 28, 36, 44, 52, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 156, 164].map((y, i) => (
-            <line
-              key={y}
-              x1="0"
-              y1={y}
-              x2={i % 2 === 0 ? "9" : "5"}
-              y2={y}
-              stroke="url(#goldStationeryRight)"
-              strokeWidth="1.1"
-            />
-          ))}
-          {/* Brass centerline groove */}
-          <line x1="18" y1="12" x2="18" y2="164" stroke="rgba(212,175,55,0.4)" strokeWidth="1" strokeDasharray="6 3" />
-        </g>
+      <DecorativeStars />
 
-        {/* ── 3. TECHNICAL GEOMETRY COMPASS ── */}
-        <g transform="translate(45, 95) rotate(-8)">
-          {/* Compass top pivot knob */}
-          <circle cx="35" cy="15" r="5" fill="url(#goldStationeryRight)" />
-          <rect x="33" y="10" width="4" height="14" fill="url(#goldStationeryRight)" />
-          {/* Left metal leg */}
-          <path d="M 33 22 L 15 105" stroke="url(#goldStationeryRight)" strokeWidth="3" strokeLinecap="round" />
-          {/* Needle point */}
-          <path d="M 15 105 L 12 118" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" />
-          {/* Right metal leg */}
-          <path d="M 37 22 L 53 100" stroke="url(#goldStationeryRight)" strokeWidth="3" strokeLinecap="round" />
-          {/* Pencil collar clamp and lead */}
-          <rect x="50" y="98" width="6" height="10" rx="1" fill="#181818" stroke="#D4AF37" strokeWidth="1" />
-          <polygon points="51,108 55,108 53,118" fill="#555" />
-          {/* Brass adjustment knurled thumb screw */}
-          <line x1="23" y1="55" x2="45" y2="55" stroke="#F5D76E" strokeWidth="1.6" />
-          <circle cx="34" cy="55" r="3.2" fill="#D4AF37" />
-        </g>
+      {/* 4. Separate Spiral Notebook Card */}
+      <div className="login-decor-card" title="Spiral Bound Notebook">
+        <svg width="220" height="80" viewBox="0 0 220 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(60, 6)">
+            {/* Cover */}
+            <rect x="0" y="0" width="100" height="66" rx="5" fill="#141414" stroke="#D4AF37" strokeWidth="1.4" />
+            <rect x="8" y="6" width="84" height="54" rx="2" fill="#1A1A1A" />
+            <line x1="14" y1="20" x2="86" y2="20" stroke="rgba(212,175,55,0.2)" strokeWidth="0.8" />
+            <line x1="14" y1="33" x2="86" y2="33" stroke="rgba(212,175,55,0.2)" strokeWidth="0.8" />
+            <line x1="14" y1="46" x2="86" y2="46" stroke="rgba(212,175,55,0.2)" strokeWidth="0.8" />
+            {/* Center geometric star crest (no text) */}
+            <circle cx="50" cy="33" r="10" fill="#141414" stroke="#D4AF37" strokeWidth="1.1" />
+            <polygon points="50,26 52.5,31 57,33 52.5,35 50,40 47.5,35 43,33 47.5,31" fill="#F5D76E" />
+            {/* Spiral binding rings along top */}
+            {[10, 22, 34, 46, 58, 70, 82, 94].map((xPos) => (
+              <ellipse key={xPos} cx={xPos} cy="0" rx="2.5" ry="4" fill="#D4AF37" stroke="#080808" strokeWidth="0.8" />
+            ))}
+          </g>
+        </svg>
+      </div>
 
-        {/* ── 4. DESK STATIONERY CUP / HOLDER ── */}
-        <g transform="translate(98, 145)">
-          {/* Desk shadow */}
-          <ellipse cx="48" cy="115" rx="46" ry="9" fill="rgba(0,0,0,0.65)" />
-          {/* Cup cylindrical tapered body */}
-          <path d="M 12 110 L 4 12 C 4 12 48 5 92 12 L 84 110 C 84 110 48 116 12 110 Z" fill="url(#cupGradRight)" stroke="url(#goldStationeryRight)" strokeWidth="1.6" />
-          {/* Elegant geometric gold crisscross wire lattice */}
-          <path d="M 18 24 L 78 100 M 78 24 L 18 100 M 10 52 L 86 52 M 12 76 L 84 76" stroke="rgba(212,175,55,0.26)" strokeWidth="1.1" />
-          {/* Polished gold top rim */}
-          <ellipse cx="48" cy="12" rx="44" ry="9" fill="#161616" stroke="url(#goldStationeryRight)" strokeWidth="2" />
-          {/* Polished gold base rim */}
-          <ellipse cx="48" cy="109" rx="36" ry="6" fill="none" stroke="url(#goldStationeryRight)" strokeWidth="1.6" />
-        </g>
+      <DecorativeStars />
 
-        {/* ── 5. PENS AND PENCILS ARRANGED INSIDE THE CUP ── */}
-        {/* Luxury Gold Fountain Pen (Left) */}
-        <g transform="translate(112, 36) rotate(-5)">
-          {/* Pen lacquered barrel */}
-          <rect x="18" y="44" width="9" height="85" rx="2" fill="#151515" stroke="url(#goldStationeryRight)" strokeWidth="1" />
-          {/* Cap band */}
-          <rect x="17" y="42" width="11" height="4.5" fill="url(#goldStationeryRight)" />
-          {/* Gold pocket clip */}
-          <path d="M 27 44 L 29.5 44 L 29.5 78 L 27 80" stroke="url(#goldStationeryRight)" strokeWidth="1.8" fill="none" />
-          {/* 18K engraved nib */}
-          <path d="M 18 42 L 22.5 15 L 27 42 Z" fill="url(#goldStationeryRight)" stroke="#9E7618" strokeWidth="0.8" />
-          <circle cx="22.5" cy="27" r="1" fill="#121212" />
-          <line x1="22.5" y1="15" x2="22.5" y2="27" stroke="#121212" strokeWidth="0.6" />
-        </g>
-
-        {/* Hexagonal Drawing Pencil (Gold-Yellow Body, Center) */}
-        <g transform="translate(134, 48) rotate(5)">
-          {/* Pencil body */}
-          <rect x="10" y="32" width="7.5" height="90" fill="url(#pencilYellowRight)" stroke="#AA771C" strokeWidth="0.8" />
-          {/* Metal ferrule collar */}
-          <rect x="9.5" y="116" width="8.5" height="7" fill="url(#goldStationeryRight)" />
-          {/* Eraser tip */}
-          <rect x="10" y="123" width="7.5" height="5" rx="2" fill="#D97706" />
-          {/* Sharpened cedar cone */}
-          <polygon points="10,32 17.5,32 13.75,10" fill="#E2D4B7" stroke="#AA771C" strokeWidth="0.6" />
-          {/* Black graphite point */}
-          <polygon points="12,19 15.5,19 13.75,10" fill="#121212" />
-        </g>
-
-        {/* Mechanical Drafting Pencil (Right) */}
-        <g transform="translate(154, 58) rotate(14)">
-          {/* Metallic shaft */}
-          <rect x="6" y="30" width="6.5" height="85" rx="1" fill="#242424" stroke="url(#goldStationeryRight)" strokeWidth="0.8" />
-          {/* Gold knurled grip */}
-          <rect x="5.5" y="32" width="7.5" height="20" fill="url(#goldStationeryRight)" />
-          {/* Pocket clip */}
-          <line x1="12.5" y1="62" x2="12.5" y2="90" stroke="url(#goldStationeryRight)" strokeWidth="1.6" />
-          {/* Precision lead sleeve */}
-          <polygon points="6,30 12.5,30 9.25,16" fill="url(#goldStationeryRight)" />
-          <line x1="9.25" y1="16" x2="9.25" y2="9" stroke="#FFF" strokeWidth="1.1" />
-        </g>
-
-        {/* ── 6. DESK ACCESSORIES (Brass Paperclips) ── */}
-        <g transform="translate(85, 252) rotate(22)">
-          <path d="M 0 0 L 0 22 C 0 27 7 27 7 22 L 7 5 C 7 2 11 2 11 5 L 11 24 C 11 31 -2 31 -2 24 L -2 7" fill="none" stroke="url(#goldStationeryRight)" strokeWidth="1.8" strokeLinecap="round" />
-        </g>
-        <g transform="translate(182, 260) rotate(-15)">
-          <path d="M 0 0 L 0 16 C 0 20 5 20 5 16 L 5 4 C 5 2 8 2 8 4 L 8 18 C 8 23 -2 23 -2 18 L -2 5" fill="none" stroke="url(#goldStationeryRight)" strokeWidth="1.6" strokeLinecap="round" />
-        </g>
-
-        {/* Floating golden sparkle stars */}
-        <path d="M 295 65 Q 300 65 300 60 Q 300 65 305 65 Q 300 65 300 70 Q 300 65 295 65 Z" fill="#F5D76E" />
-        <path d="M 40 180 Q 45 180 45 175 Q 45 180 50 180 Q 45 180 45 185 Q 45 180 40 180 Z" fill="#D4AF37" />
-        <path d="M 205 35 Q 208 35 208 32 Q 208 35 211 35 Q 208 35 208 38 Q 208 35 205 35 Z" fill="#FFF2B2" />
-      </svg>
+      {/* 5. Separate Ruler & Compass Card */}
+      <div className="login-decor-card" title="Geometry Drafting Compass & Ruler">
+        <svg width="220" height="70" viewBox="0 0 220 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Drafting Ruler (Tick marks only, NO words, NO numbers) */}
+          <g transform="translate(15, 42)">
+            <rect x="0" y="0" width="190" height="18" rx="2" fill="#1E1E1E" stroke="#D4AF37" strokeWidth="1.2" />
+            {[8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184].map((x, i) => (
+              <line key={x} x1={x} y1="0" x2={x} y2={i % 2 === 0 ? "8" : "4"} stroke="#F5D76E" strokeWidth="1" />
+            ))}
+          </g>
+          {/* Drafting Compass */}
+          <g transform="translate(75, 4)">
+            <circle cx="35" cy="8" r="4" fill="#D4AF37" />
+            <line x1="35" y1="12" x2="16" y2="38" stroke="#D4AF37" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="35" y1="12" x2="54" y2="38" stroke="#D4AF37" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="22" y1="26" x2="48" y2="26" stroke="#F5D76E" strokeWidth="1.4" />
+            <circle cx="35" cy="26" r="2.5" fill="#D4AF37" />
+          </g>
+        </svg>
+      </div>
     </aside>
   );
 }

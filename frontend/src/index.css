@@ -1075,39 +1075,66 @@ tbody tr:hover {
 
 .login-decor-side {
   flex: 1;
-  max-width: 360px;
-  background: rgba(18, 18, 18, 0.92);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--gold-border);
-  border-radius: 20px;
-  padding: 24px 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), var(--gold-glow);
+  max-width: 320px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  gap: 14px;
   animation: fadeIn 0.4s ease;
   position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.login-decor-side:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), var(--gold-glow-lg);
-  border-color: rgba(212, 175, 55, 0.4);
+  z-index: 2;
 }
 
 .login-decor-side::before {
+  display: none !important;
+}
+
+.login-decor-card {
+  width: 100%;
+  max-width: 280px;
+  background: rgba(18, 18, 18, 0.88);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), 0 0 12px rgba(212, 175, 55, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-decor-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.login-decor-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 20%;
   right: 20%;
-  height: 2px;
+  height: 1.5px;
   background: var(--gold-gradient);
-  box-shadow: 0 0 10px var(--gold-primary);
+  opacity: 0.8;
+}
+
+.login-decor-stars-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+  opacity: 0.85;
 }
 
 .login-decor-title {

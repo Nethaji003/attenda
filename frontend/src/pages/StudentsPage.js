@@ -43,15 +43,19 @@ export default function StudentsPage() {
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [deleting, setDeleting] = useState(false);
 
+  const [loadingError, setLoadingError] = useState(null);
   const fileRef = useRef();
 
   const fetchStudents = async (q = '') => {
     setLoading(true);
+    setLoadingError(null);
     try {
       const res = await studentAPI.getAll(q || undefined);
       setStudents(res.data || []);
-    } catch {
-      toast.error('Failed to load students');
+    } catch (err) {
+      const msg = err.response?.data?.message || err.response?.data?.error || 'Unable to connect to the server. Please try again.';
+      setLoadingError(msg);
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
@@ -81,23 +85,23 @@ export default function StudentsPage() {
       const res = await studentAPI.getById(id);
       const s = res.data;
       setForm({
-        studentName: s.studentName,
-        studentId: s.studentId,
-        rollNumber: s.rollNumber,
-        standard: String(s.standard),
-        section: s.section,
+        studentName: s.studentName || '',
+        studentId: s.studentId || '',
+        rollNumber: s.rollNumber ? String(s.rollNumber) : '',
+        standard: s.standard ? String(s.standard) : '1',
+        section: s.section || 'A',
         dateOfBirth: s.dateOfBirth || '',
         gender: s.gender || 'Male',
         parentName: s.parentName || '',
         mobileNumber: s.mobileNumber || '',
         address: s.address || '',
       });
-      setPhotoPreview(s.photoPath ? `http://localhost:8080${s.photoPath}` : null);
+      setPhotoPreview(s.photoPath ? (s.photoPath.startsWith('http') ? s.photoPath : `http://localhost:8080${s.photoPath}`) : null);
       setPhoto(null);
       setEditId(id);
       setShowModal(true);
-    } catch {
-      toast.error('Failed to load student details');
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Failed to load student details');
     }
   };
 
@@ -115,28 +119,75 @@ export default function StudentsPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.studentName || !form.studentId || !form.rollNumber || !form.standard || !form.section) {
-      toast.warning('Please fill all required student fields');
+    if (!form.studentName || !form.studentName.trim()) {
+      toast.warning('Please fill in all required fields. Student name is required.');
       return;
     }
+    if (!form.studentId || !form.studentId.trim()) {
+      toast.warning('Please fill in all required fields. Registration number is required.');
+      return;
+    }
+    if (!form.rollNumber || isNaN(Number(form.rollNumber)) || Number(form.rollNumber) <= 0) {
+      toast.warning('Please fill in all required fields. Valid roll number is required.');
+      return;
+    }
+    if (!form.parentName || !form.parentName.trim()) {
+      toast.warning('Please fill in all required fields. Parent/guardian name is required.');
+      return;
+    }
+    if (!form.mobileNumber || !form.mobileNumber.trim()) {
+      toast.warning('Please fill in all required fields. Mobile number is required.');
+      return;
+    }
+    const cleanMobile = form.mobileNumber.trim().replace(/\D/g, '');
+    if (cleanMobile.length !== 10 || !/^[6-9]\d{9}$/.test(cleanMobile)) {
+      toast.warning('Please enter a valid mobile number.');
+      return;
+    }
+    if (!form.dateOfBirth) {
+      toast.warning('Please fill in all required fields. Date of birth is required.');
+      return;
+    }
+
     setSaving(true);
     try {
       const fd = new FormData();
-      const studentBlob = new Blob([JSON.stringify(form)], { type: 'application/json' });
+      const studentBlob = new Blob(
+        [
+          JSON.stringify({
+            ...form,
+            studentName: form.studentName.trim(),
+            studentId: form.studentId.trim(),
+            rollNumber: Number(form.rollNumber),
+            standard: Number(form.standard),
+            parentName: form.parentName.trim(),
+            mobileNumber: cleanMobile,
+          }),
+        ],
+        { type: 'application/json' }
+      );
       fd.append('student', studentBlob);
       if (photo) fd.append('photo', photo);
 
       if (editId) {
         await studentAPI.update(editId, fd);
-        toast.success('Student record updated successfully! 🎓');
+        toast.success('Record updated successfully.');
       } else {
         await studentAPI.create(fd);
-        toast.success('New student admitted successfully! 🎉');
+        toast.success('Record saved successfully.');
       }
       setShowModal(false);
+      setForm(emptyForm);
+      setPhoto(null);
+      setPhotoPreview(null);
       fetchStudents(search);
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Failed to save student record');
+      const errMsg = err.response?.data?.error || err.response?.data?.message || 'Failed to save student record';
+      if (errMsg.toLowerCase().includes('already exists') || errMsg.toLowerCase().includes('duplicate')) {
+        toast.error('This student is already registered.');
+      } else {
+        toast.error(errMsg);
+      }
     } finally {
       setSaving(false);
     }
@@ -147,11 +198,11 @@ export default function StudentsPage() {
     setDeleting(true);
     try {
       await studentAPI.delete(deleteTarget.id);
-      toast.success(`Student ${deleteTarget.studentName} removed successfully`);
+      toast.success('Record deleted successfully.');
       setDeleteTarget(null);
       fetchStudents(search);
-    } catch {
-      toast.error('Failed to delete student record');
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Failed to delete student record');
     } finally {
       setDeleting(false);
     }
@@ -292,6 +343,15 @@ export default function StudentsPage() {
             <div className="spinner" style={{ width: 36, height: 36, margin: 'auto' }}></div>
             <p style={{ marginTop: 12, color: '#A0A0A0' }}>Fetching student directory...</p>
           </div>
+        ) : loadingError ? (
+          <div style={{ textAlign: 'center', padding: 48, background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.25)', borderRadius: 12, margin: 20 }}>
+            <i className="bi bi-exclamation-triangle-fill" style={{ fontSize: 36, color: '#EF4444', display: 'block', marginBottom: 12 }}></i>
+            <h5 style={{ color: '#FFFFFF', marginBottom: 6 }}>Unable to Load Students</h5>
+            <p style={{ color: '#F87171', fontSize: 13, marginBottom: 16 }}>{loadingError}</p>
+            <button className="btn btn-primary btn-sm" onClick={() => fetchStudents(search)} style={{ fontWeight: 700 }}>
+              <i className="bi bi-arrow-clockwise"></i> Retry Loading Students
+            </button>
+          </div>
         ) : (
           <table>
             <thead>
@@ -320,7 +380,7 @@ export default function StudentsPage() {
               ) : (
                 filteredStudents.map((s, idx) => (
                   <tr key={s.id}>
-                    <td style={{ color: '#888', fontWeight: 600 }}>{idx + 1}</td>
+                    <td style={{ color: '#D4AF37', fontWeight: 600 }}>{idx + 1}</td>
                     <td>
                       {s.photoPath ? (
                         <img
@@ -369,7 +429,7 @@ export default function StudentsPage() {
                     <td style={{ fontWeight: 800, color: '#FFFFFF' }}>{s.rollNumber}</td>
                     <td>
                       <div style={{ color: '#FFFFFF', fontSize: 13 }}>{s.parentName || '—'}</div>
-                      <div style={{ fontSize: 11, color: '#888' }}>{s.address || 'Resident'}</div>
+                      <div style={{ fontSize: 11, color: '#A0A0A0' }}>{s.address || 'Resident'}</div>
                     </td>
                     <td>
                       <a
@@ -389,7 +449,7 @@ export default function StudentsPage() {
                     </td>
                     <td style={{ fontSize: 12.5, color: '#A0A0A0' }}>{s.gender || '—'}</td>
                     <td style={{ textAlign: 'right' }}>
-                      <div style={{ display: 'inline-flex', gap: 6 }}>
+                      <div style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}>
                         {/* View Profile */}
                         <button
                           className="btn btn-outline btn-sm btn-icon"
@@ -414,11 +474,21 @@ export default function StudentsPage() {
 
                         {/* Edit */}
                         <button
-                          className="btn btn-outline btn-sm btn-icon"
+                          className="btn btn-outline btn-sm"
+                          style={{
+                            padding: '6px 12px',
+                            fontSize: 12,
+                            fontWeight: 700,
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 5,
+                            color: '#F5D76E',
+                            borderColor: 'rgba(212, 175, 55, 0.4)',
+                          }}
                           data-tooltip="Edit Record"
                           onClick={() => openEdit(s.id)}
                         >
-                          <i className="bi bi-pencil-fill" style={{ color: '#38BDF8' }}></i>
+                          <i className="bi bi-pencil-fill" style={{ color: '#D4AF37' }}></i> Edit
                         </button>
 
                         {/* Delete */}

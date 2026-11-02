@@ -1,5 +1,7 @@
 package com.attenda.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -17,8 +19,9 @@ public class Mark {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "marks", "attendances"})
     private Student student;
 
     @Column(nullable = false)
@@ -52,5 +55,15 @@ public class Mark {
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
+    }
+
+    @JsonProperty("studentId")
+    public Long getStudentIdValue() {
+        return student != null ? student.getId() : null;
+    }
+
+    @JsonProperty("studentName")
+    public String getStudentNameValue() {
+        return student != null ? student.getStudentName() : null;
     }
 }
