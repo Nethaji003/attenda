@@ -681,7 +681,7 @@ export default function StudentRegisterPage() {
                   gap: 6
                 }}
               >
-                <i className="bi bi-shield-lock"></i> Staff Login
+                <i className="bi bi-box-arrow-in-right"></i> Login
               </Link>
             )}
           </div>
