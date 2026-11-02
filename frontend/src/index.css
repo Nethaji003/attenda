@@ -1076,15 +1076,16 @@ tbody tr:hover {
 .login-decor-side {
   flex: 1;
   max-width: 360px;
-  background: rgba(18, 18, 18, 0.88);
+  background: rgba(18, 18, 18, 0.92);
   backdrop-filter: blur(16px);
   border: 1px solid var(--gold-border);
   border-radius: 20px;
-  padding: 28px 24px;
+  padding: 24px 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), var(--gold-glow);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   animation: fadeIn 0.4s ease;
   position: relative;
@@ -1356,4 +1357,98 @@ tbody tr:hover {
   .search-box {
     max-width: 100%;
   }
+}
+
+/* ========================================================
+   REPORTS PAGE & HIGH-CONTRAST TAB NAVIGATION
+   ======================================================== */
+.report-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 22px;
+  font-size: 13.5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.report-tab-btn.inactive {
+  background: #181818 !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+.report-tab-btn.inactive:hover {
+  background: #242424 !important;
+  color: #F5D76E !important;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3) !important;
+  transform: translateY(-1px);
+}
+
+.report-tab-btn.inactive i {
+  color: #F5D76E !important;
+  font-size: 16px;
+}
+
+.report-tab-btn.active {
+  background: var(--gold-gradient) !important;
+  color: #080808 !important;
+  font-weight: 800 !important;
+  border: 1.5px solid #F5D76E !important;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.45) !important;
+  transform: translateY(-1px);
+}
+
+.report-tab-btn.active i {
+  color: #080808 !important;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* ========================================================
+   CONTRAST SAFEGUARDS FOR LIGHT/WHITE CONTAINERS
+   ======================================================== */
+.white-panel, .card-light, .bg-white {
+  background-color: #FFFFFF !important;
+  color: #111111 !important;
+  border: 1px solid #D4AF37 !important;
+}
+
+.white-panel .card-header, .card-light .card-header, .bg-white .card-header {
+  background: #F7F5EE !important;
+  border-bottom: 1px solid #D4AF37 !important;
+}
+
+.white-panel .card-header h5, .card-light .card-header h5, .bg-white .card-header h5,
+.white-panel h5, .card-light h5 {
+  color: #111111 !important;
+  font-weight: 700 !important;
+}
+
+.white-panel .form-label, .card-light .form-label, .bg-white .form-label {
+  color: #785A00 !important;
+  font-weight: 700 !important;
+}
+
+.white-panel .form-control, .white-panel .form-select,
+.card-light .form-control, .card-light .form-select,
+.bg-white .form-control, .bg-white .form-select {
+  background: #FFFFFF !important;
+  color: #111111 !important;
+  border: 1.5px solid #B8860B !important;
+}
+
+.white-panel .form-control:focus, .white-panel .form-select:focus,
+.card-light .form-control:focus, .card-light .form-select:focus {
+  background: #FFFFFF !important;
+  color: #111111 !important;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3) !important;
 }

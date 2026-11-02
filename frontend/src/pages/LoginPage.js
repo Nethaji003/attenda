@@ -4,209 +4,204 @@ import { useAuth } from '../context/AuthContext';
 import { authAPI } from '../api/services';
 import { toast } from 'react-toastify';
 
-/* ─── LEFT EDUCATIONAL DECORATION (Books, Notebooks, School Illustration) ─── */
+/* ─── LEFT EDUCATIONAL DECORATION (Books, Open Notebook, Graduation Cap, School Supplies - Pure Vector Art, No Words) ─── */
 function LeftEducationalDecoration() {
   return (
-    <aside className="login-decor-side login-decor-left" aria-label="Educational heritage decoration">
-      {/* SVG Illustration: Stack of books, notebook, diploma scroll, graduation cap, quill */}
+    <aside className="login-decor-side login-decor-left" aria-label="Educational illustration">
       <svg
         width="100%"
-        height="240"
-        viewBox="0 0 320 240"
+        height="310"
+        viewBox="0 0 320 310"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ display: 'block', margin: '0 auto', filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.6))' }}
+        style={{ display: 'block', margin: '0 auto', filter: 'drop-shadow(0 10px 28px rgba(0,0,0,0.65))' }}
       >
         <defs>
-          <linearGradient id="goldMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="goldMetallicLeft" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#FFF2B2" />
             <stop offset="35%" stopColor="#D4AF37" />
             <stop offset="70%" stopColor="#AA771C" />
             <stop offset="100%" stopColor="#F5D76E" />
           </linearGradient>
 
-          <linearGradient id="bookCover1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#1E1E1E" />
-            <stop offset="50%" stopColor="#121212" />
-            <stop offset="100%" stopColor="#282828" />
+          <linearGradient id="bookCover1Left" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#24201A" />
+            <stop offset="50%" stopColor="#151310" />
+            <stop offset="100%" stopColor="#2E2820" />
           </linearGradient>
 
-          <linearGradient id="bookCover2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#242119" />
-            <stop offset="50%" stopColor="#18150F" />
-            <stop offset="100%" stopColor="#352F1F" />
+          <linearGradient id="bookCover2Left" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#1F2326" />
+            <stop offset="50%" stopColor="#121518" />
+            <stop offset="100%" stopColor="#2B3035" />
           </linearGradient>
 
-          <linearGradient id="pagesGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id="bookCover3Left" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#261A1D" />
+            <stop offset="50%" stopColor="#160E10" />
+            <stop offset="100%" stopColor="#332226" />
+          </linearGradient>
+
+          <linearGradient id="pagesGradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#E2D4B7" />
-            <stop offset="100%" stopColor="#F5EDDB" />
+            <stop offset="50%" stopColor="#FAF4E6" />
+            <stop offset="100%" stopColor="#EADCC2" />
           </linearGradient>
 
-          <filter id="goldGlowSoft" x="-20%" y="-20%" width="140%" height="140%">
+          <filter id="goldGlowSoftLeft" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="4" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
         </defs>
 
-        {/* Ambient golden aura behind books */}
-        <circle cx="160" cy="130" r="85" fill="rgba(212,175,55,0.06)" />
+        {/* Ambient golden aura behind stack */}
+        <circle cx="160" cy="165" r="95" fill="rgba(212,175,55,0.07)" />
 
-        {/* ── 1. BOTTOM BOOK (Large Hardcover Textbook) ── */}
-        <g transform="translate(35, 175)">
-          {/* Shadow */}
-          <ellipse cx="125" cy="40" rx="120" ry="10" fill="rgba(0,0,0,0.6)" />
-          {/* Book base & pages */}
-          <rect x="18" y="8" width="220" height="24" rx="3" fill="url(#pagesGrad)" stroke="#B39B72" strokeWidth="1" />
-          {/* Page line ridges */}
-          <line x1="230" y1="13" x2="238" y2="13" stroke="#8A7753" strokeWidth="1" />
-          <line x1="230" y1="18" x2="238" y2="18" stroke="#8A7753" strokeWidth="1" />
-          <line x1="230" y1="23" x2="238" y2="23" stroke="#8A7753" strokeWidth="1" />
-          <line x1="230" y1="28" x2="238" y2="28" stroke="#8A7753" strokeWidth="1" />
-          {/* Bottom cover spine */}
-          <path d="M 12 32 L 236 32 C 238 32 240 30 240 28 L 240 4 C 240 2 238 0 236 0 L 12 0 C 6 0 0 6 0 16 C 0 26 6 32 12 32 Z" fill="url(#bookCover1)" stroke="url(#goldMetallic)" strokeWidth="1.5" />
-          {/* Gold embossed bands on spine */}
-          <rect x="24" y="0" width="4" height="32" fill="url(#goldMetallic)" />
-          <rect x="36" y="0" width="2" height="32" fill="url(#goldMetallic)" />
-          <rect x="180" y="0" width="2" height="32" fill="url(#goldMetallic)" />
-          <rect x="190" y="0" width="4" height="32" fill="url(#goldMetallic)" />
-          {/* Title on spine */}
-          <text x="105" y="20" fill="url(#goldMetallic)" fontSize="10" fontFamily="'Cinzel', serif" fontWeight="700" letterSpacing="2">ENCYCLOPEDIA</text>
+        {/* ── 1. BOTTOM BOOK (Large Gilded Hardcover Tome) ── */}
+        <g transform="translate(30, 230)">
+          {/* Ground shadow */}
+          <ellipse cx="130" cy="46" rx="125" ry="12" fill="rgba(0,0,0,0.65)" />
+          {/* Paper pages block */}
+          <rect x="20" y="10" width="232" height="28" rx="3" fill="url(#pagesGradLeft)" stroke="#B39B72" strokeWidth="1" />
+          {/* Fine page gilding ridges */}
+          <line x1="244" y1="15" x2="252" y2="15" stroke="#AA771C" strokeWidth="1" />
+          <line x1="244" y1="21" x2="252" y2="21" stroke="#AA771C" strokeWidth="1" />
+          <line x1="244" y1="27" x2="252" y2="27" stroke="#AA771C" strokeWidth="1" />
+          <line x1="244" y1="33" x2="252" y2="33" stroke="#AA771C" strokeWidth="1" />
+          {/* Spine and outer binding */}
+          <path d="M 12 38 L 250 38 C 252 38 254 36 254 33 L 254 5 C 254 2 252 0 250 0 L 12 0 C 5 0 0 7 0 19 C 0 31 5 38 12 38 Z" fill="url(#bookCover1Left)" stroke="url(#goldMetallicLeft)" strokeWidth="1.6" />
+          {/* Gold embossed ornamental spine ribs (Pure geometric art, NO text) */}
+          <rect x="26" y="0" width="5" height="38" fill="url(#goldMetallicLeft)" />
+          <rect x="38" y="0" width="2" height="38" fill="url(#goldMetallicLeft)" />
+          <rect x="195" y="0" width="2" height="38" fill="url(#goldMetallicLeft)" />
+          <rect x="207" y="0" width="5" height="38" fill="url(#goldMetallicLeft)" />
+          {/* Central gold filigree diamond motif on spine */}
+          <polygon points="120,19 126,11 132,19 126,27" fill="url(#goldMetallicLeft)" />
+          <polygon points="108,19 112,14 116,19 112,24" fill="url(#goldMetallicLeft)" />
+          <polygon points="136,19 140,14 144,19 140,24" fill="url(#goldMetallicLeft)" />
         </g>
 
-        {/* ── 2. MIDDLE BOOK (Angled Academic Tome) ── */}
-        <g transform="translate(50, 142)">
-          {/* Pages */}
-          <rect x="16" y="6" width="195" height="22" rx="3" fill="url(#pagesGrad)" stroke="#B39B72" strokeWidth="1" />
-          {/* Cover */}
-          <path d="M 10 28 L 210 28 C 212 28 214 26 214 24 L 214 4 C 214 2 212 0 210 0 L 10 0 C 5 0 0 5 0 14 C 0 23 5 28 10 28 Z" fill="url(#bookCover2)" stroke="url(#goldMetallic)" strokeWidth="1.5" />
-          {/* Gold spine filigree */}
-          <rect x="20" y="0" width="3" height="28" fill="url(#goldMetallic)" />
-          <rect x="175" y="0" width="3" height="28" fill="url(#goldMetallic)" />
-          {/* Title */}
-          <text x="95" y="17" fill="#F5D76E" fontSize="9" fontFamily="'Cinzel', serif" fontWeight="700" letterSpacing="1.5">MATHEMATICS</text>
+        {/* ── 2. MIDDLE BOOK (Academic Tome with Silk Bookmark) ── */}
+        <g transform="translate(44, 185)">
+          {/* Pages block */}
+          <rect x="18" y="8" width="206" height="25" rx="3" fill="url(#pagesGradLeft)" stroke="#B39B72" strokeWidth="1" />
+          {/* Cover and curved spine */}
+          <path d="M 10 33 L 222 33 C 224 33 226 31 226 28 L 226 4 C 226 1 224 0 222 0 L 10 0 C 4 0 0 6 0 16.5 C 0 27 4 33 10 33 Z" fill="url(#bookCover2Left)" stroke="url(#goldMetallicLeft)" strokeWidth="1.5" />
+          {/* Spine gold filigree bars */}
+          <rect x="22" y="0" width="4" height="33" fill="url(#goldMetallicLeft)" />
+          <rect x="32" y="0" width="2" height="33" fill="url(#goldMetallicLeft)" />
+          <rect x="184" y="0" width="2" height="33" fill="url(#goldMetallicLeft)" />
+          <rect x="194" y="0" width="4" height="33" fill="url(#goldMetallicLeft)" />
+          {/* Spine center emblem (pure geometric shapes, no letters) */}
+          <circle cx="113" cy="16.5" r="5" fill="none" stroke="url(#goldMetallicLeft)" strokeWidth="1.2" />
+          <circle cx="113" cy="16.5" r="2" fill="url(#goldMetallicLeft)" />
           {/* Hanging silk bookmark ribbon */}
-          <path d="M 140 28 Q 142 42 136 54 L 144 51 L 152 54 Q 146 42 144 28 Z" fill="#D4AF37" />
+          <path d="M 148 33 Q 150 48 144 64 L 152 60 L 160 64 Q 154 48 152 33 Z" fill="#D4AF37" />
         </g>
 
-        {/* ── 3. TOP OPEN NOTEBOOK / JOURNAL ── */}
-        <g transform="translate(48, 98)">
-          {/* Notebook cover base */}
-          <path d="M 12 36 Q 110 40 212 36 L 216 4 Q 110 8 12 4 Z" fill="#141414" stroke="url(#goldMetallic)" strokeWidth="1.2" />
-          {/* Left Page */}
-          <path d="M 14 34 Q 65 30 112 33 L 112 3 Q 65 0 14 3 Z" fill="#FBF8EE" />
-          {/* Right Page */}
-          <path d="M 116 33 Q 165 30 214 34 L 214 3 Q 165 0 116 3 Z" fill="#F6F1E3" />
-          {/* Center spine crease */}
-          <line x1="114" y1="1" x2="114" y2="35" stroke="#AA771C" strokeWidth="2" />
-          {/* Faint ruled lines on left page */}
-          <line x1="26" y1="10" x2="102" y2="10" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="3 2" />
-          <line x1="26" y1="16" x2="102" y2="16" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="3 2" />
-          <line x1="26" y1="22" x2="102" y2="22" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="3 2" />
-          <line x1="26" y1="28" x2="88" y2="28" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="3 2" />
-          {/* Faint ruled lines on right page */}
-          <line x1="126" y1="10" x2="202" y2="10" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="3 2" />
-          <line x1="126" y1="16" x2="202" y2="16" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="3 2" />
-          <line x1="126" y1="22" x2="202" y2="22" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="3 2" />
-          <line x1="126" y1="28" x2="180" y2="28" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="3 2" />
-          {/* Gold corner ornaments */}
-          <polygon points="14,3 24,3 14,13" fill="#D4AF37" />
-          <polygon points="214,3 204,3 214,13" fill="#D4AF37" />
+        {/* ── 3. TOP HARDBOUND JOURNAL (Dark Obsidian with Gold Corner Guards) ── */}
+        <g transform="translate(56, 142)">
+          {/* Pages */}
+          <rect x="16" y="6" width="184" height="23" rx="2" fill="url(#pagesGradLeft)" stroke="#B39B72" strokeWidth="1" />
+          {/* Cover */}
+          <path d="M 10 29 L 198 29 C 200 29 202 27 202 25 L 202 4 C 202 2 200 0 198 0 L 10 0 C 4 0 0 5 0 14.5 C 0 24 4 29 10 29 Z" fill="url(#bookCover3Left)" stroke="url(#goldMetallicLeft)" strokeWidth="1.5" />
+          {/* Spine accents */}
+          <rect x="20" y="0" width="3" height="29" fill="url(#goldMetallicLeft)" />
+          <rect x="178" y="0" width="3" height="29" fill="url(#goldMetallicLeft)" />
+          {/* Geometric gold spine flourish */}
+          <polygon points="101,14.5 106,9 111,14.5 106,20" fill="url(#goldMetallicLeft)" />
         </g>
 
-        {/* ── 4. GRADUATION MORTARBOARD CAP (Left Accent) ── */}
-        <g transform="translate(130, 18)">
-          {/* Skull cap beneath */}
-          <path d="M 45 42 Q 65 52 85 42 L 85 52 Q 65 64 45 52 Z" fill="#181818" stroke="#D4AF37" strokeWidth="1" />
-          {/* Diamond top */}
-          <polygon points="65,18 115,35 65,52 15,35" fill="#141414" stroke="url(#goldMetallic)" strokeWidth="2" filter="url(#goldGlowSoft)" />
-          {/* Gold button on center */}
-          <circle cx="65" cy="35" r="4" fill="url(#goldMetallic)" />
-          {/* Tassel cord & drape */}
-          <path d="M 65 35 Q 92 38 102 54 L 106 72" stroke="#F5D76E" strokeWidth="2" fill="none" strokeLinecap="round" />
-          {/* Tassel fringe ring & brush */}
-          <rect x="103" y="70" width="6" height="3" rx="1" fill="#D4AF37" />
-          <path d="M 103 73 L 100 86 L 112 86 L 109 73 Z" fill="url(#goldMetallic)" />
+        {/* ── 4. OPEN NOTEBOOK (Clean Parchment, Gold Frame, STRICTLY NO WORDS) ── */}
+        <g transform="translate(48, 92)">
+          {/* Notebook back base */}
+          <path d="M 12 40 Q 112 45 216 40 L 220 4 Q 112 8 12 4 Z" fill="#141414" stroke="url(#goldMetallicLeft)" strokeWidth="1.3" />
+          {/* Left blank page with delicate gold margin border */}
+          <path d="M 14 38 Q 66 34 114 37 L 114 3 Q 66 0 14 3 Z" fill="#FDFBF4" />
+          <path d="M 22 34 Q 66 31 106 33 L 106 7 Q 66 4 22 7 Z" fill="none" stroke="rgba(212, 175, 55, 0.4)" strokeWidth="0.8" />
+          {/* Right blank page with delicate gold margin border */}
+          <path d="M 118 37 Q 166 34 218 38 L 218 3 Q 166 0 118 3 Z" fill="#F8F3E5" />
+          <path d="M 126 33 Q 166 31 210 34 L 210 7 Q 166 4 126 7 Z" fill="none" stroke="rgba(212, 175, 55, 0.4)" strokeWidth="0.8" />
+          {/* Center spine stitching */}
+          <line x1="116" y1="1" x2="116" y2="39" stroke="#AA771C" strokeWidth="2.5" />
+          {/* Elegant gold corner filigree on pages */}
+          <polygon points="14,3 26,3 14,15" fill="#D4AF37" />
+          <polygon points="218,3 206,3 218,15" fill="#D4AF37" />
         </g>
 
-        {/* ── 5. DIPLOMA SCROLL WITH GOLD SEAL (Left Bottom) ── */}
-        <g transform="translate(25, 120) rotate(-18)">
-          {/* Rolled parchment cylinder */}
-          <rect x="0" y="0" width="70" height="18" rx="4" fill="url(#pagesGrad)" stroke="#B39B72" strokeWidth="1" />
-          {/* Inner roll curl */}
-          <ellipse cx="68" cy="9" rx="3" ry="8" fill="#D9C7A1" stroke="#9E875C" strokeWidth="1" />
-          {/* Red/Gold tie ribbon */}
-          <rect x="30" y="-1" width="10" height="20" fill="#AA771C" />
-          <circle cx="35" cy="9" r="6" fill="url(#goldMetallic)" stroke="#121212" strokeWidth="1" />
-          <path d="M 33 15 L 30 26 L 36 23 L 42 26 L 39 15" fill="#AA771C" />
+        {/* ── 5. GRADUATION MORTARBOARD CAP (Golden Tassel, Diamond Peak) ── */}
+        <g transform="translate(132, 12)">
+          {/* Cap skull base */}
+          <path d="M 45 42 Q 65 53 85 42 L 85 53 Q 65 65 45 53 Z" fill="#181818" stroke="#D4AF37" strokeWidth="1.2" />
+          {/* Cap diamond top plate */}
+          <polygon points="65,16 118,34 65,52 12,34" fill="#131313" stroke="url(#goldMetallicLeft)" strokeWidth="2.2" filter="url(#goldGlowSoftLeft)" />
+          {/* Center gold button rivet */}
+          <circle cx="65" cy="34" r="4.5" fill="url(#goldMetallicLeft)" />
+          {/* Flowing golden tassel cord */}
+          <path d="M 65 34 Q 94 37 104 55 L 108 75" stroke="#F5D76E" strokeWidth="2.2" fill="none" strokeLinecap="round" />
+          {/* Tassel brass ring & fringe brush */}
+          <rect x="105" y="73" width="7" height="3" rx="1" fill="#D4AF37" />
+          <path d="M 105 76 L 101 92 L 115 92 L 112 76 Z" fill="url(#goldMetallicLeft)" />
         </g>
 
-        {/* ── 6. VINTAGE FEATHER QUILL & INKWELL ── */}
-        <g transform="translate(225, 60)">
+        {/* ── 6. DIPLOMA SCROLL WITH GOLD SEAL ── */}
+        <g transform="translate(24, 115) rotate(-16)">
+          {/* Rolled parchment tube */}
+          <rect x="0" y="0" width="74" height="20" rx="4" fill="url(#pagesGradLeft)" stroke="#B39B72" strokeWidth="1" />
+          {/* Inner roll spiral curl */}
+          <ellipse cx="72" cy="10" rx="3.5" ry="9" fill="#D9C7A1" stroke="#9E875C" strokeWidth="1" />
+          {/* Imperial gold ribbon band and wax seal */}
+          <rect x="31" y="-1" width="11" height="22" fill="#AA771C" />
+          <circle cx="36.5" cy="10" r="7" fill="url(#goldMetallicLeft)" stroke="#121212" strokeWidth="1" />
+          <path d="M 34 17 L 30 29 L 37 26 L 44 29 L 41 17" fill="#AA771C" />
+        </g>
+
+        {/* ── 7. VINTAGE QUILL & INKWELL ── */}
+        <g transform="translate(230, 52)">
           {/* Inkwell pot */}
-          <path d="M 22 75 L 38 75 L 42 92 L 18 92 Z" fill="#1A1A1A" stroke="url(#goldMetallic)" strokeWidth="1.2" />
-          <ellipse cx="30" cy="75" rx="8" ry="3" fill="#0A0A0A" stroke="#D4AF37" strokeWidth="1" />
-          {/* Quill feather angling up */}
-          <path d="M 30 75 Q 40 40 65 8 Q 50 25 35 55 Z" fill="#F5D76E" stroke="#AA771C" strokeWidth="1" />
-          <path d="M 30 75 Q 36 60 52 28" stroke="#121212" strokeWidth="1.2" />
+          <path d="M 20 80 L 40 80 L 44 98 L 16 98 Z" fill="#1A1A1A" stroke="url(#goldMetallicLeft)" strokeWidth="1.3" />
+          <ellipse cx="30" cy="80" rx="9" ry="3.5" fill="#0A0A0A" stroke="#D4AF37" strokeWidth="1" />
+          {/* Quill feather plume */}
+          <path d="M 30 80 Q 42 42 70 8 Q 54 26 36 58 Z" fill="#F5D76E" stroke="#AA771C" strokeWidth="1" />
+          <path d="M 30 80 Q 38 62 56 28" stroke="#121212" strokeWidth="1.2" />
         </g>
 
-        {/* Floating golden sparkle stars */}
-        <path d="M 35 60 Q 40 60 40 55 Q 40 60 45 60 Q 40 60 40 65 Q 40 60 35 60 Z" fill="#F5D76E" />
-        <path d="M 275 140 Q 280 140 280 135 Q 280 140 285 140 Q 280 140 280 145 Q 280 140 275 140 Z" fill="#D4AF37" />
-        <path d="M 125 12 Q 128 12 128 9 Q 128 12 131 12 Q 128 12 128 15 Q 128 12 125 12 Z" fill="#FFF2B2" />
+        {/* Ambient floating gold sparkles */}
+        <path d="M 32 55 Q 36 55 36 51 Q 36 55 40 55 Q 36 55 36 59 Q 36 55 32 55 Z" fill="#F5D76E" />
+        <path d="M 285 145 Q 290 145 290 140 Q 290 145 295 145 Q 290 145 290 150 Q 290 145 285 145 Z" fill="#D4AF37" />
+        <path d="M 120 10 Q 123 10 123 7 Q 123 10 126 10 Q 123 10 123 13 Q 123 10 120 10 Z" fill="#FFF2B2" />
       </svg>
-
-      <div className="login-decor-title">Scholastic Heritage</div>
-      <div className="login-decor-subtitle">
-        Empowering institutional excellence through disciplined attendance & rigorous academic tracking.
-      </div>
-
-      <div className="login-decor-badges">
-        <div className="login-decor-badge-item">
-          <i className="bi bi-book-half"></i>
-          <span>Standards 1st to 12th Complete Curriculum</span>
-        </div>
-        <div className="login-decor-badge-item">
-          <i className="bi bi-award-fill"></i>
-          <span>Continuous Assessment & Grading Scheme</span>
-        </div>
-        <div className="login-decor-badge-item">
-          <i className="bi bi-shield-check"></i>
-          <span>Certified Institutional Academic Records</span>
-        </div>
-      </div>
     </aside>
   );
 }
 
-/* ─── RIGHT EDUCATIONAL DECORATION (Pencils, Pens, Notebook, Stationery) ─── */
+/* ─── RIGHT EDUCATIONAL DECORATION (Pencils, Pens, Pencil Holder, Notebook, Ruler - Pure Vector Art, No Words) ─── */
 function RightEducationalDecoration() {
   return (
-    <aside className="login-decor-side login-decor-right" aria-label="Educational stationery decoration">
-      {/* SVG Illustration: Pencil holder, luxury fountain pen, drafting pencils, ruler, compass, notepad */}
+    <aside className="login-decor-side login-decor-right" aria-label="Educational stationery illustration">
       <svg
         width="100%"
-        height="240"
-        viewBox="0 0 320 240"
+        height="310"
+        viewBox="0 0 320 310"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ display: 'block', margin: '0 auto', filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.6))' }}
+        style={{ display: 'block', margin: '0 auto', filter: 'drop-shadow(0 10px 28px rgba(0,0,0,0.65))' }}
       >
         <defs>
-          <linearGradient id="goldStationery" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="goldStationeryRight" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#FFF2B2" />
             <stop offset="40%" stopColor="#D4AF37" />
             <stop offset="80%" stopColor="#C59B27" />
             <stop offset="100%" stopColor="#F5D76E" />
           </linearGradient>
 
-          <linearGradient id="cupGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#1C1C1C" />
+          <linearGradient id="cupGradRight" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#1E1E1E" />
             <stop offset="50%" stopColor="#141414" />
             <stop offset="100%" stopColor="#2A2A2A" />
           </linearGradient>
 
-          <linearGradient id="pencilYellow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id="pencilYellowRight" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#E5C048" />
             <stop offset="50%" stopColor="#F5D76E" />
             <stop offset="100%" stopColor="#C59B27" />
@@ -214,155 +209,136 @@ function RightEducationalDecoration() {
         </defs>
 
         {/* Ambient golden aura behind stationery */}
-        <circle cx="160" cy="130" r="85" fill="rgba(212,175,55,0.06)" />
+        <circle cx="160" cy="165" r="95" fill="rgba(212,175,55,0.07)" />
 
-        {/* ── 1. SPIRAL NOTEBOOK (Standing on the right side) ── */}
-        <g transform="translate(185, 55)">
-          {/* Notebook back shadow */}
-          <rect x="0" y="0" width="85" height="135" rx="6" fill="#141414" stroke="url(#goldStationery)" strokeWidth="1.5" />
-          {/* Lined cover accent */}
-          <rect x="8" y="10" width="69" height="115" rx="3" fill="#1A1A1A" />
-          {/* Golden grid pattern lines */}
-          <line x1="16" y1="28" x2="70" y2="28" stroke="rgba(212,175,55,0.3)" strokeWidth="1" />
-          <line x1="16" y1="44" x2="70" y2="44" stroke="rgba(212,175,55,0.3)" strokeWidth="1" />
-          <line x1="16" y1="60" x2="70" y2="60" stroke="rgba(212,175,55,0.3)" strokeWidth="1" />
-          <line x1="16" y1="76" x2="70" y2="76" stroke="rgba(212,175,55,0.3)" strokeWidth="1" />
-          <line x1="16" y1="92" x2="70" y2="92" stroke="rgba(212,175,55,0.3)" strokeWidth="1" />
-          {/* Center gold emblem badge */}
-          <circle cx="42" cy="60" r="14" fill="#141414" stroke="url(#goldStationery)" strokeWidth="1.2" />
-          <path d="M 37 60 L 42 55 L 47 60 L 42 65 Z" fill="#F5D76E" />
-          {/* Spiral binding rings along left margin */}
-          {[16, 28, 40, 52, 64, 76, 88, 100, 112].map((yPos) => (
-            <ellipse key={yPos} cx="0" cy={yPos} rx="4" ry="2" fill="url(#goldStationery)" stroke="#080808" strokeWidth="1" />
+        {/* ── 1. STANDING SPIRAL NOTEBOOK (Right Background, Geometric Emblem, NO WORDS) ── */}
+        <g transform="translate(190, 75)">
+          {/* Notebook cover base */}
+          <rect x="0" y="0" width="90" height="150" rx="7" fill="#141414" stroke="url(#goldStationeryRight)" strokeWidth="1.6" />
+          {/* Inset cover panel */}
+          <rect x="8" y="10" width="74" height="130" rx="3" fill="#1A1A1A" />
+          {/* Subtle gold geometric grid frame */}
+          <rect x="14" y="18" width="62" height="114" fill="none" stroke="rgba(212,175,55,0.3)" strokeWidth="1" />
+          <line x1="14" y1="42" x2="76" y2="42" stroke="rgba(212,175,55,0.2)" strokeWidth="1" />
+          <line x1="14" y1="68" x2="76" y2="68" stroke="rgba(212,175,55,0.2)" strokeWidth="1" />
+          <line x1="14" y1="94" x2="76" y2="94" stroke="rgba(212,175,55,0.2)" strokeWidth="1" />
+          {/* Central gold geometric star crest (STRICTLY NO LETTERS) */}
+          <circle cx="45" cy="68" r="16" fill="#141414" stroke="url(#goldStationeryRight)" strokeWidth="1.3" />
+          <polygon points="45,56 49,64 57,68 49,72 45,80 41,72 33,68 41,64" fill="#F5D76E" />
+          {/* Golden twin-wire spiral coils along spine */}
+          {[16, 28, 40, 52, 64, 76, 88, 100, 112, 124, 136].map((yPos) => (
+            <ellipse key={yPos} cx="0" cy={yPos} rx="4.5" ry="2.2" fill="url(#goldStationeryRight)" stroke="#080808" strokeWidth="1" />
           ))}
         </g>
 
-        {/* ── 2. METRIC DRAFTING RULER (Behind stationery cup) ── */}
-        <g transform="translate(68, 40) rotate(-16)">
-          {/* Wooden/brass ruler body */}
-          <rect x="0" y="0" width="22" height="150" rx="3" fill="#1E1E1E" stroke="url(#goldStationery)" strokeWidth="1.2" />
-          {/* Gold measurement edge ticks */}
-          {[10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122, 130, 138].map((y, i) => (
+        {/* ── 2. METRIC DRAFTING RULER (Tick Marks Only, NO WORDS, NO NUMBERS) ── */}
+        <g transform="translate(65, 50) rotate(-16)">
+          {/* Ruler body */}
+          <rect x="0" y="0" width="24" height="175" rx="3" fill="#1E1E1E" stroke="url(#goldStationeryRight)" strokeWidth="1.3" />
+          {/* Measurement tick marks only (NO WORDS, NO NUMBERS) */}
+          {[12, 20, 28, 36, 44, 52, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 156, 164].map((y, i) => (
             <line
               key={y}
               x1="0"
               y1={y}
-              x2={i % 2 === 0 ? "8" : "4"}
+              x2={i % 2 === 0 ? "9" : "5"}
               y2={y}
-              stroke="url(#goldStationery)"
-              strokeWidth="1"
+              stroke="url(#goldStationeryRight)"
+              strokeWidth="1.1"
             />
           ))}
-          <text x="14" y="55" fill="#D4AF37" fontSize="7" fontFamily="'Outfit', sans-serif" transform="rotate(90 14 55)">ATTENDA 30CM</text>
+          {/* Brass centerline groove */}
+          <line x1="18" y1="12" x2="18" y2="164" stroke="rgba(212,175,55,0.4)" strokeWidth="1" strokeDasharray="6 3" />
         </g>
 
-        {/* ── 3. TECHNICAL GEOMETRY COMPASS (Slanted left) ── */}
-        <g transform="translate(50, 75) rotate(-8)">
-          {/* Compass top hinge knob */}
-          <circle cx="35" cy="15" r="5" fill="url(#goldStationery)" />
-          <rect x="33" y="10" width="4" height="14" fill="url(#goldStationery)" />
-          {/* Left leg */}
-          <path d="M 33 22 L 15 95" stroke="url(#goldStationery)" strokeWidth="3" strokeLinecap="round" />
+        {/* ── 3. TECHNICAL GEOMETRY COMPASS ── */}
+        <g transform="translate(45, 95) rotate(-8)">
+          {/* Compass top pivot knob */}
+          <circle cx="35" cy="15" r="5" fill="url(#goldStationeryRight)" />
+          <rect x="33" y="10" width="4" height="14" fill="url(#goldStationeryRight)" />
+          {/* Left metal leg */}
+          <path d="M 33 22 L 15 105" stroke="url(#goldStationeryRight)" strokeWidth="3" strokeLinecap="round" />
           {/* Needle point */}
-          <path d="M 15 95 L 12 108" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" />
-          {/* Right leg */}
-          <path d="M 37 22 L 52 90" stroke="url(#goldStationery)" strokeWidth="3" strokeLinecap="round" />
-          {/* Pencil holder collar & lead */}
-          <rect x="49" y="88" width="6" height="10" rx="1" fill="#181818" stroke="#D4AF37" strokeWidth="1" />
-          <polygon points="50,98 54,98 52,108" fill="#555" />
-          {/* Adjustment screw rod */}
-          <line x1="24" y1="50" x2="44" y2="50" stroke="#F5D76E" strokeWidth="1.5" />
-          <circle cx="34" cy="50" r="3" fill="#D4AF37" />
+          <path d="M 15 105 L 12 118" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" />
+          {/* Right metal leg */}
+          <path d="M 37 22 L 53 100" stroke="url(#goldStationeryRight)" strokeWidth="3" strokeLinecap="round" />
+          {/* Pencil collar clamp and lead */}
+          <rect x="50" y="98" width="6" height="10" rx="1" fill="#181818" stroke="#D4AF37" strokeWidth="1" />
+          <polygon points="51,108 55,108 53,118" fill="#555" />
+          {/* Brass adjustment knurled thumb screw */}
+          <line x1="23" y1="55" x2="45" y2="55" stroke="#F5D76E" strokeWidth="1.6" />
+          <circle cx="34" cy="55" r="3.2" fill="#D4AF37" />
         </g>
 
         {/* ── 4. DESK STATIONERY CUP / HOLDER ── */}
-        <g transform="translate(100, 115)">
-          {/* Shadow */}
-          <ellipse cx="45" cy="100" rx="42" ry="7" fill="rgba(0,0,0,0.6)" />
-          {/* Holder body */}
-          <path d="M 12 95 L 4 10 C 4 10 45 4 86 10 L 78 95 C 78 95 45 100 12 95 Z" fill="url(#cupGrad)" stroke="url(#goldStationery)" strokeWidth="1.5" />
-          {/* Decorative geometric gold mesh lattice */}
-          <path d="M 18 20 L 72 85 M 72 20 L 18 85 M 10 45 L 80 45 M 12 65 L 78 65" stroke="rgba(212,175,55,0.22)" strokeWidth="1" />
-          {/* Top rim */}
-          <ellipse cx="45" cy="10" rx="41" ry="8" fill="#161616" stroke="url(#goldStationery)" strokeWidth="1.8" />
-          {/* Base band */}
-          <ellipse cx="45" cy="94" rx="33" ry="5" fill="none" stroke="url(#goldStationery)" strokeWidth="1.5" />
+        <g transform="translate(98, 145)">
+          {/* Desk shadow */}
+          <ellipse cx="48" cy="115" rx="46" ry="9" fill="rgba(0,0,0,0.65)" />
+          {/* Cup cylindrical tapered body */}
+          <path d="M 12 110 L 4 12 C 4 12 48 5 92 12 L 84 110 C 84 110 48 116 12 110 Z" fill="url(#cupGradRight)" stroke="url(#goldStationeryRight)" strokeWidth="1.6" />
+          {/* Elegant geometric gold crisscross wire lattice */}
+          <path d="M 18 24 L 78 100 M 78 24 L 18 100 M 10 52 L 86 52 M 12 76 L 84 76" stroke="rgba(212,175,55,0.26)" strokeWidth="1.1" />
+          {/* Polished gold top rim */}
+          <ellipse cx="48" cy="12" rx="44" ry="9" fill="#161616" stroke="url(#goldStationeryRight)" strokeWidth="2" />
+          {/* Polished gold base rim */}
+          <ellipse cx="48" cy="109" rx="36" ry="6" fill="none" stroke="url(#goldStationeryRight)" strokeWidth="1.6" />
         </g>
 
-        {/* ── 5. STATIONERY PENS & PENCILS INSIDE THE CUP ── */}
-        {/* Luxury Gold Fountain Pen (Center-left) */}
-        <g transform="translate(112, 18) rotate(-4)">
-          {/* Pen body barrel */}
-          <rect x="18" y="42" width="9" height="70" rx="2" fill="#161616" stroke="url(#goldStationery)" strokeWidth="1" />
-          {/* Gold cap ring */}
-          <rect x="17" y="40" width="11" height="4" fill="url(#goldStationery)" />
+        {/* ── 5. PENS AND PENCILS ARRANGED INSIDE THE CUP ── */}
+        {/* Luxury Gold Fountain Pen (Left) */}
+        <g transform="translate(112, 36) rotate(-5)">
+          {/* Pen lacquered barrel */}
+          <rect x="18" y="44" width="9" height="85" rx="2" fill="#151515" stroke="url(#goldStationeryRight)" strokeWidth="1" />
+          {/* Cap band */}
+          <rect x="17" y="42" width="11" height="4.5" fill="url(#goldStationeryRight)" />
           {/* Gold pocket clip */}
-          <path d="M 27 42 L 29 42 L 29 70 L 27 72" stroke="url(#goldStationery)" strokeWidth="1.8" fill="none" />
-          {/* Golden 18K engraved nib */}
-          <path d="M 18 40 L 22.5 16 L 27 40 Z" fill="url(#goldStationery)" stroke="#9E7618" strokeWidth="0.8" />
-          {/* Nib breathing hole & slit */}
+          <path d="M 27 44 L 29.5 44 L 29.5 78 L 27 80" stroke="url(#goldStationeryRight)" strokeWidth="1.8" fill="none" />
+          {/* 18K engraved nib */}
+          <path d="M 18 42 L 22.5 15 L 27 42 Z" fill="url(#goldStationeryRight)" stroke="#9E7618" strokeWidth="0.8" />
           <circle cx="22.5" cy="27" r="1" fill="#121212" />
-          <line x1="22.5" y1="16" x2="22.5" y2="27" stroke="#121212" strokeWidth="0.6" />
+          <line x1="22.5" y1="15" x2="22.5" y2="27" stroke="#121212" strokeWidth="0.6" />
         </g>
 
-        {/* Hexagonal Drawing Pencil (Gold-Yellow Body) */}
-        <g transform="translate(132, 28) rotate(6)">
-          {/* Pencil shaft */}
-          <rect x="10" y="32" width="7" height="75" fill="url(#pencilYellow)" stroke="#AA771C" strokeWidth="0.8" />
+        {/* Hexagonal Drawing Pencil (Gold-Yellow Body, Center) */}
+        <g transform="translate(134, 48) rotate(5)">
+          {/* Pencil body */}
+          <rect x="10" y="32" width="7.5" height="90" fill="url(#pencilYellowRight)" stroke="#AA771C" strokeWidth="0.8" />
           {/* Metal ferrule collar */}
-          <rect x="9.5" y="100" width="8" height="6" fill="url(#goldStationery)" />
-          {/* Pink/dark eraser tip */}
-          <rect x="10" y="106" width="7" height="4" rx="2" fill="#D97706" />
-          {/* Sharpened cedar wood cone */}
-          <polygon points="10,32 17,32 13.5,12" fill="#E2D4B7" stroke="#AA771C" strokeWidth="0.6" />
+          <rect x="9.5" y="116" width="8.5" height="7" fill="url(#goldStationeryRight)" />
+          {/* Eraser tip */}
+          <rect x="10" y="123" width="7.5" height="5" rx="2" fill="#D97706" />
+          {/* Sharpened cedar cone */}
+          <polygon points="10,32 17.5,32 13.75,10" fill="#E2D4B7" stroke="#AA771C" strokeWidth="0.6" />
           {/* Black graphite point */}
-          <polygon points="12,20 15,20 13.5,12" fill="#121212" />
+          <polygon points="12,19 15.5,19 13.75,10" fill="#121212" />
         </g>
 
-        {/* Mechanical Drafting Pencil (Right side) */}
-        <g transform="translate(150, 36) rotate(14)">
-          {/* Dark metallic shaft */}
-          <rect x="6" y="30" width="6" height="75" rx="1" fill="#242424" stroke="url(#goldStationery)" strokeWidth="0.8" />
+        {/* Mechanical Drafting Pencil (Right) */}
+        <g transform="translate(154, 58) rotate(14)">
+          {/* Metallic shaft */}
+          <rect x="6" y="30" width="6.5" height="85" rx="1" fill="#242424" stroke="url(#goldStationeryRight)" strokeWidth="0.8" />
           {/* Gold knurled grip */}
-          <rect x="5.5" y="32" width="7" height="18" fill="url(#goldStationery)" />
-          {/* Brass pocket clip */}
-          <line x1="12" y1="58" x2="12" y2="82" stroke="url(#goldStationery)" strokeWidth="1.5" />
+          <rect x="5.5" y="32" width="7.5" height="20" fill="url(#goldStationeryRight)" />
+          {/* Pocket clip */}
+          <line x1="12.5" y1="62" x2="12.5" y2="90" stroke="url(#goldStationeryRight)" strokeWidth="1.6" />
           {/* Precision lead sleeve */}
-          <polygon points="6,30 12,30 9,18" fill="url(#goldStationery)" />
-          <line x1="9" y1="18" x2="9" y2="12" stroke="#FFF" strokeWidth="1" />
+          <polygon points="6,30 12.5,30 9.25,16" fill="url(#goldStationeryRight)" />
+          <line x1="9.25" y1="16" x2="9.25" y2="9" stroke="#FFF" strokeWidth="1.1" />
         </g>
 
-        {/* ── 6. BRASS ACCESSORIES (Desk Foreground) ── */}
-        {/* Brass paperclip */}
-        <g transform="translate(85, 205) rotate(25)">
-          <path d="M 0 0 L 0 20 C 0 24 6 24 6 20 L 6 4 C 6 2 10 2 10 4 L 10 22 C 10 28 -2 28 -2 22 L -2 6" fill="none" stroke="url(#goldStationery)" strokeWidth="1.8" strokeLinecap="round" />
+        {/* ── 6. DESK ACCESSORIES (Brass Paperclips) ── */}
+        <g transform="translate(85, 252) rotate(22)">
+          <path d="M 0 0 L 0 22 C 0 27 7 27 7 22 L 7 5 C 7 2 11 2 11 5 L 11 24 C 11 31 -2 31 -2 24 L -2 7" fill="none" stroke="url(#goldStationeryRight)" strokeWidth="1.8" strokeLinecap="round" />
+        </g>
+        <g transform="translate(182, 260) rotate(-15)">
+          <path d="M 0 0 L 0 16 C 0 20 5 20 5 16 L 5 4 C 5 2 8 2 8 4 L 8 18 C 8 23 -2 23 -2 18 L -2 5" fill="none" stroke="url(#goldStationeryRight)" strokeWidth="1.6" strokeLinecap="round" />
         </g>
 
         {/* Floating golden sparkle stars */}
-        <path d="M 285 55 Q 290 55 290 50 Q 290 55 295 55 Q 290 55 290 60 Q 290 55 285 55 Z" fill="#F5D76E" />
-        <path d="M 45 155 Q 50 155 50 150 Q 50 155 55 155 Q 50 155 50 160 Q 50 155 45 155 Z" fill="#D4AF37" />
-        <path d="M 195 25 Q 198 25 198 22 Q 198 25 201 25 Q 198 25 198 28 Q 198 25 195 25 Z" fill="#FFF2B2" />
+        <path d="M 295 65 Q 300 65 300 60 Q 300 65 305 65 Q 300 65 300 70 Q 300 65 295 65 Z" fill="#F5D76E" />
+        <path d="M 40 180 Q 45 180 45 175 Q 45 180 50 180 Q 45 180 45 185 Q 45 180 40 180 Z" fill="#D4AF37" />
+        <path d="M 205 35 Q 208 35 208 32 Q 208 35 211 35 Q 208 35 208 38 Q 208 35 205 35 Z" fill="#FFF2B2" />
       </svg>
-
-      <div className="login-decor-title">Administrative Precision</div>
-      <div className="login-decor-subtitle">
-        Automated parent communication, real-time absence tracking, and dynamic report generation.
-      </div>
-
-      <div className="login-decor-badges">
-        <div className="login-decor-badge-item">
-          <i className="bi bi-chat-left-dots-fill"></i>
-          <span>Instant Parent SMS & Notice Dispatch</span>
-        </div>
-        <div className="login-decor-badge-item">
-          <i className="bi bi-calendar2-check-fill"></i>
-          <span>Real-Time Attendance Synchronization</span>
-        </div>
-        <div className="login-decor-badge-item">
-          <i className="bi bi-file-earmark-bar-graph-fill"></i>
-          <span>Cumulative Marksheet & PDF Analytics</span>
-        </div>
-      </div>
     </aside>
   );
 }

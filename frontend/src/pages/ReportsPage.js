@@ -241,7 +241,7 @@ export default function ReportsPage() {
           flexWrap: 'wrap',
           gap: 16,
           marginBottom: 24,
-          background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(18, 18, 18, 0.9) 100%)',
+          background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(18, 18, 18, 0.95) 100%)',
           border: '1px solid var(--gold-border)',
           borderRadius: 'var(--radius-md)',
           padding: '20px 24px',
@@ -269,53 +269,116 @@ export default function ReportsPage() {
             <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: '#FFFFFF' }}>
               Institutional Reports & Analytics
             </h3>
-            <p style={{ margin: 0, fontSize: 12.5, color: '#A0A0A0', marginTop: 2 }}>
+            <p style={{ margin: 0, fontSize: 13, color: '#D5D5D5', marginTop: 3 }}>
               Generate daily, monthly, student-specific and class-wise attendance dossiers with PDF & Excel export.
             </p>
           </div>
         </div>
 
-        <span className="badge badge-gold" style={{ fontSize: 12, padding: '6px 14px' }}>
+        <span className="badge badge-gold" style={{ fontSize: 12, padding: '7px 16px', fontWeight: 700 }}>
           <i className="bi bi-shield-check"></i> Export Verified
         </span>
       </div>
 
-      {/* ── REPORT NAVIGATION TABS (Section 5 Requirement) ── */}
-      <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
+      {/* ── REPORT NAVIGATION TABS (High Contrast Black & Gold Theme) ── */}
+      <div style={{ display: 'flex', gap: 10, marginBottom: 24, flexWrap: 'wrap' }}>
         {[
           { id: 'daily', label: 'Daily Attendance Report', icon: 'bi-calendar-day' },
           { id: 'monthly', label: 'Monthly Class Report', icon: 'bi-calendar-month' },
           { id: 'student', label: 'Student-Wise Report', icon: 'bi-person-badge-fill' },
           { id: 'classwise', label: 'Class-Wise Comparison', icon: 'bi-grid-3x3-gap-fill' },
-        ].map((t) => (
-          <button
-            key={t.id}
-            className={`btn ${tab === t.id ? 'btn-primary' : 'btn-outline'}`}
-            onClick={() => setTab(t.id)}
-          >
-            <i className={`bi ${t.icon}`}></i> {t.label}
-          </button>
-        ))}
+        ].map((t) => {
+          const isActive = tab === t.id;
+          return (
+            <button
+              key={t.id}
+              className={`report-tab-btn ${isActive ? 'active' : 'inactive'}`}
+              style={{
+                background: isActive ? 'var(--gold-gradient)' : '#181818',
+                color: isActive ? '#080808' : '#FFFFFF',
+                border: isActive ? '1.5px solid #F5D76E' : '1.5px solid rgba(212, 175, 55, 0.45)',
+                fontWeight: isActive ? 800 : 700,
+                padding: '11px 22px',
+                borderRadius: '8px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 10,
+                fontSize: 13.5,
+                cursor: 'pointer',
+                boxShadow: isActive ? '0 4px 16px rgba(212, 175, 55, 0.45)' : '0 2px 8px rgba(0, 0, 0, 0.4)',
+                transition: 'all 0.2s ease',
+              }}
+              onClick={() => setTab(t.id)}
+            >
+              <i
+                className={`bi ${t.icon}`}
+                style={{
+                  color: isActive ? '#080808' : '#F5D76E',
+                  fontSize: 16,
+                  fontWeight: 800,
+                }}
+              ></i>
+              <span>{t.label}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* ══════════════ TAB 1: DAILY ATTENDANCE REPORT ══════════════ */}
       {tab === 'daily' && (
         <div>
-          <div className="card mb-4">
-            <div className="card-header">
-              <div className="card-header-icon">
+          <div className="card mb-4" style={{ background: '#141414', border: '1px solid var(--gold-border)' }}>
+            <div
+              className="card-header"
+              style={{
+                background: 'linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(20, 20, 20, 0.98) 100%)',
+                borderBottom: '1px solid var(--gold-border)',
+                padding: '18px 22px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 12,
+              }}
+            >
+              <div
+                className="card-header-icon"
+                style={{
+                  width: 38,
+                  height: 38,
+                  borderRadius: 8,
+                  background: 'rgba(212, 175, 55, 0.15)',
+                  border: '1px solid rgba(212, 175, 55, 0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#F5D76E',
+                  fontSize: 18,
+                }}
+              >
                 <i className="bi bi-calendar-event"></i>
               </div>
-              <h5>Select Date for Daily Institutional Roster</h5>
+              <h5 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.3px' }}>
+                Select Date for Daily Institutional Roster
+              </h5>
             </div>
-            <div className="card-body">
+            <div className="card-body" style={{ background: '#141414', padding: 22 }}>
               <div style={{ display: 'flex', gap: 14, alignItems: 'flex-end', flexWrap: 'wrap' }}>
                 <div>
-                  <label className="form-label">Report Date</label>
+                  <label className="form-label" style={{ color: '#F5D76E', fontWeight: 600, fontSize: 13, marginBottom: 7, display: 'block' }}>
+                    Report Date
+                  </label>
                   <input
                     type="date"
                     className="form-control"
-                    style={{ width: 180 }}
+                    style={{
+                      width: 190,
+                      background: '#181818',
+                      color: '#FFFFFF',
+                      border: '1.5px solid rgba(212, 175, 55, 0.45)',
+                      padding: '9px 12px',
+                      borderRadius: 8,
+                      fontSize: 13.5,
+                      fontWeight: 500,
+                    }}
                     value={dailyDate}
                     onChange={(e) => setDailyDate(e.target.value)}
                     max={today}
@@ -325,15 +388,16 @@ export default function ReportsPage() {
                   className="btn btn-primary"
                   onClick={loadDaily}
                   disabled={loadingDaily}
+                  style={{ padding: '10px 20px', fontWeight: 700 }}
                 >
                   <i className={`bi bi-search ${loadingDaily ? 'spin' : ''}`}></i> Generate Report
                 </button>
                 {dailyData.length > 0 && (
                   <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
-                    <button className="btn btn-danger" onClick={downloadDailyPdf}>
+                    <button className="btn btn-danger" onClick={downloadDailyPdf} style={{ fontWeight: 700 }}>
                       <i className="bi bi-file-earmark-pdf-fill"></i> Download PDF
                     </button>
-                    <button className="btn btn-success" onClick={downloadDailyExcel}>
+                    <button className="btn btn-success" onClick={downloadDailyExcel} style={{ fontWeight: 700 }}>
                       <i className="bi bi-file-earmark-excel-fill"></i> Download Excel
                     </button>
                   </div>
@@ -419,7 +483,7 @@ export default function ReportsPage() {
                   <tbody>
                     {dailyData.map((r, i) => (
                       <tr key={r.id || i}>
-                        <td style={{ color: '#888' }}>{i + 1}</td>
+                        <td style={{ color: '#D4AF37', fontWeight: 600 }}>{i + 1}</td>
                         <td>
                           <strong style={{ color: '#FFFFFF', fontSize: 13.5 }}>{r.studentName}</strong>
                         </td>
@@ -456,20 +520,57 @@ export default function ReportsPage() {
       {/* ══════════════ TAB 2: MONTHLY CLASS REPORT ══════════════ */}
       {tab === 'monthly' && (
         <div>
-          <div className="card mb-4">
-            <div className="card-header">
-              <div className="card-header-icon">
+          <div className="card mb-4" style={{ background: '#141414', border: '1px solid var(--gold-border)' }}>
+            <div
+              className="card-header"
+              style={{
+                background: 'linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(20, 20, 20, 0.98) 100%)',
+                borderBottom: '1px solid var(--gold-border)',
+                padding: '18px 22px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 12,
+              }}
+            >
+              <div
+                className="card-header-icon"
+                style={{
+                  width: 38,
+                  height: 38,
+                  borderRadius: 8,
+                  background: 'rgba(212, 175, 55, 0.15)',
+                  border: '1px solid rgba(212, 175, 55, 0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#F5D76E',
+                  fontSize: 18,
+                }}
+              >
                 <i className="bi bi-calendar-month"></i>
               </div>
-              <h5>Select Class, Month & Academic Year</h5>
+              <h5 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.3px' }}>
+                Select Class, Month & Academic Year
+              </h5>
             </div>
-            <div className="card-body">
+            <div className="card-body" style={{ background: '#141414', padding: 22 }}>
               <div style={{ display: 'flex', gap: 14, alignItems: 'flex-end', flexWrap: 'wrap' }}>
                 <div>
-                  <label className="form-label">Standard</label>
+                  <label className="form-label" style={{ color: '#F5D76E', fontWeight: 600, fontSize: 13, marginBottom: 7, display: 'block' }}>
+                    Standard
+                  </label>
                   <select
                     className="form-select"
-                    style={{ width: 130 }}
+                    style={{
+                      width: 130,
+                      background: '#181818',
+                      color: '#FFFFFF',
+                      border: '1.5px solid rgba(212, 175, 55, 0.45)',
+                      padding: '9px 12px',
+                      borderRadius: 8,
+                      fontSize: 13.5,
+                      fontWeight: 500,
+                    }}
                     value={monthStd}
                     onChange={(e) => setMonthStd(Number(e.target.value))}
                   >
@@ -482,10 +583,21 @@ export default function ReportsPage() {
                 </div>
 
                 <div>
-                  <label className="form-label">Section</label>
+                  <label className="form-label" style={{ color: '#F5D76E', fontWeight: 600, fontSize: 13, marginBottom: 7, display: 'block' }}>
+                    Section
+                  </label>
                   <select
                     className="form-select"
-                    style={{ width: 110 }}
+                    style={{
+                      width: 110,
+                      background: '#181818',
+                      color: '#FFFFFF',
+                      border: '1.5px solid rgba(212, 175, 55, 0.45)',
+                      padding: '9px 12px',
+                      borderRadius: 8,
+                      fontSize: 13.5,
+                      fontWeight: 500,
+                    }}
                     value={monthSec}
                     onChange={(e) => setMonthSec(e.target.value)}
                   >
@@ -498,10 +610,21 @@ export default function ReportsPage() {
                 </div>
 
                 <div>
-                  <label className="form-label">Month</label>
+                  <label className="form-label" style={{ color: '#F5D76E', fontWeight: 600, fontSize: 13, marginBottom: 7, display: 'block' }}>
+                    Month
+                  </label>
                   <select
                     className="form-select"
-                    style={{ width: 150 }}
+                    style={{
+                      width: 150,
+                      background: '#181818',
+                      color: '#FFFFFF',
+                      border: '1.5px solid rgba(212, 175, 55, 0.45)',
+                      padding: '9px 12px',
+                      borderRadius: 8,
+                      fontSize: 13.5,
+                      fontWeight: 500,
+                    }}
                     value={month}
                     onChange={(e) => setMonth(Number(e.target.value))}
                   >
@@ -514,11 +637,22 @@ export default function ReportsPage() {
                 </div>
 
                 <div>
-                  <label className="form-label">Year</label>
+                  <label className="form-label" style={{ color: '#F5D76E', fontWeight: 600, fontSize: 13, marginBottom: 7, display: 'block' }}>
+                    Year
+                  </label>
                   <input
                     type="number"
                     className="form-control"
-                    style={{ width: 110 }}
+                    style={{
+                      width: 110,
+                      background: '#181818',
+                      color: '#FFFFFF',
+                      border: '1.5px solid rgba(212, 175, 55, 0.45)',
+                      padding: '9px 12px',
+                      borderRadius: 8,
+                      fontSize: 13.5,
+                      fontWeight: 500,
+                    }}
                     value={year}
                     onChange={(e) => setYear(Number(e.target.value))}
                     min={2020}
@@ -530,6 +664,7 @@ export default function ReportsPage() {
                   className="btn btn-primary"
                   onClick={loadMonthly}
                   disabled={loadingMonth}
+                  style={{ padding: '10px 20px', fontWeight: 700 }}
                 >
                   <i className={`bi bi-search ${loadingMonth ? 'spin' : ''}`}></i> Generate
                 </button>
@@ -537,7 +672,7 @@ export default function ReportsPage() {
                 {Object.keys(monthGrouped).length > 0 && (
                   <button
                     className="btn btn-success"
-                    style={{ marginLeft: 'auto' }}
+                    style={{ marginLeft: 'auto', fontWeight: 700 }}
                     onClick={exportMonthlyExcel}
                   >
                     <i className="bi bi-file-earmark-excel-fill"></i> Export Monthly Excel
@@ -594,7 +729,7 @@ export default function ReportsPage() {
                           <td>
                             <span style={{ color: '#FBBF24', fontWeight: 700 }}>{d.leave || 0}</span>
                           </td>
-                          <td>{total}</td>
+                          <td style={{ color: '#E0E0E0', fontWeight: 600 }}>{total}</td>
                           <td>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                               <div className="progress-bar-wrapper" style={{ width: 90 }}>
@@ -627,28 +762,66 @@ export default function ReportsPage() {
       {/* ══════════════ TAB 3: STUDENT-WISE ATTENDANCE REPORT ══════════════ */}
       {tab === 'student' && (
         <div>
-          <div className="card mb-4">
-            <div className="card-header">
-              <div className="card-header-icon">
+          <div className="card mb-4" style={{ background: '#141414', border: '1px solid var(--gold-border)' }}>
+            <div
+              className="card-header"
+              style={{
+                background: 'linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(20, 20, 20, 0.98) 100%)',
+                borderBottom: '1px solid var(--gold-border)',
+                padding: '18px 22px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 12,
+              }}
+            >
+              <div
+                className="card-header-icon"
+                style={{
+                  width: 38,
+                  height: 38,
+                  borderRadius: 8,
+                  background: 'rgba(212, 175, 55, 0.15)',
+                  border: '1px solid rgba(212, 175, 55, 0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#F5D76E',
+                  fontSize: 18,
+                }}
+              >
                 <i className="bi bi-person-bounding-box"></i>
               </div>
-              <h5>Select Student for Individual Attendance Dossier</h5>
+              <h5 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.3px' }}>
+                Select Student for Individual Attendance Dossier
+              </h5>
             </div>
-            <div className="card-body">
+            <div className="card-body" style={{ background: '#141414', padding: 22 }}>
               <div style={{ display: 'flex', gap: 14, alignItems: 'flex-end', flexWrap: 'wrap' }}>
                 <div style={{ flex: 1, minWidth: 260 }}>
-                  <label className="form-label">Search & Select Student</label>
+                  <label className="form-label" style={{ color: '#F5D76E', fontWeight: 600, fontSize: 13, marginBottom: 7, display: 'block' }}>
+                    Search & Select Student
+                  </label>
                   <select
                     className="form-select"
+                    style={{
+                      background: '#181818',
+                      color: '#FFFFFF',
+                      border: '1.5px solid rgba(212, 175, 55, 0.45)',
+                      padding: '9px 12px',
+                      borderRadius: 8,
+                      fontSize: 13.5,
+                      fontWeight: 500,
+                      width: '100%',
+                    }}
                     value={selectedStudentId}
                     onChange={(e) => {
                       setSelectedStudentId(e.target.value);
                       loadStudentReport(e.target.value);
                     }}
                   >
-                    <option value="">-- Choose Student --</option>
+                    <option value="" style={{ background: '#181818', color: '#999' }}>-- Choose Student --</option>
                     {studentList.map((s) => (
-                      <option key={s.id} value={s.id}>
+                      <option key={s.id} value={s.id} style={{ background: '#181818', color: '#FFF' }}>
                         {s.studentName} ({s.studentId}) — Class {s.standard}-{s.section} (Roll #{s.rollNumber})
                       </option>
                     ))}
@@ -659,12 +832,13 @@ export default function ReportsPage() {
                   className="btn btn-primary"
                   onClick={() => loadStudentReport(selectedStudentId)}
                   disabled={loadingStudent || !selectedStudentId}
+                  style={{ padding: '10px 20px', fontWeight: 700 }}
                 >
                   <i className={`bi bi-search ${loadingStudent ? 'spin' : ''}`}></i> View Dossier
                 </button>
 
                 {studentSummary && (
-                  <button className="btn btn-danger" onClick={downloadStudentPdf}>
+                  <button className="btn btn-danger" onClick={downloadStudentPdf} style={{ fontWeight: 700 }}>
                     <i className="bi bi-file-earmark-pdf-fill"></i> Export Student PDF
                   </button>
                 )}
@@ -724,7 +898,7 @@ export default function ReportsPage() {
                   <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: '#FFFFFF' }}>
                     {selectedStudentObj.studentName}
                   </h3>
-                  <div style={{ display: 'flex', gap: 8, marginTop: 4, flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', gap: 8, marginTop: 6, flexWrap: 'wrap', alignItems: 'center' }}>
                     <span className="badge badge-gold">{selectedStudentObj.studentId}</span>
                     <span className="badge badge-primary">
                       Std {selectedStudentObj.standard}-{selectedStudentObj.section}
@@ -732,8 +906,8 @@ export default function ReportsPage() {
                     <span className="badge" style={{ background: '#222', color: '#FFF' }}>
                       Roll #{selectedStudentObj.rollNumber}
                     </span>
-                    <span style={{ fontSize: 12, color: '#A0A0A0', marginLeft: 6 }}>
-                      Parent: <strong>{selectedStudentObj.parentName || '—'}</strong> (📱 {selectedStudentObj.mobileNumber})
+                    <span style={{ fontSize: 13, color: '#E0E0E0', marginLeft: 6 }}>
+                      Parent: <strong style={{ color: '#FFFFFF' }}>{selectedStudentObj.parentName || '—'}</strong> (📱 {selectedStudentObj.mobileNumber})
                     </span>
                   </div>
                 </div>
@@ -797,14 +971,23 @@ export default function ReportsPage() {
       {/* ══════════════ TAB 4: CLASS-WISE COMPARISON REPORT ══════════════ */}
       {tab === 'classwise' && (
         <div>
-          <div className="table-wrapper">
-            <div className="table-toolbar">
-              <h5 style={{ margin: 0, color: '#FFFFFF', fontSize: 14 }}>
+          <div className="table-wrapper" style={{ background: '#141414', border: '1px solid var(--gold-border)' }}>
+            <div
+              className="table-toolbar"
+              style={{
+                background: 'linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(20, 20, 20, 0.98) 100%)',
+                borderBottom: '1px solid var(--gold-border)',
+                padding: '16px 20px',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <h5 style={{ margin: 0, color: '#FFFFFF', fontSize: 15, fontWeight: 700 }}>
                 Comparative Class Attendance Breakdown (Standards 1 to 12)
               </h5>
               <button
                 className="btn btn-success btn-sm"
-                style={{ marginLeft: 'auto' }}
+                style={{ marginLeft: 'auto', fontWeight: 700 }}
                 onClick={exportClasswiseExcel}
               >
                 <i className="bi bi-file-earmark-excel-fill"></i> Export Class Matrix Excel
@@ -814,7 +997,7 @@ export default function ReportsPage() {
             {loadingClasswise ? (
               <div style={{ textAlign: 'center', padding: 50 }}>
                 <div className="spinner" style={{ width: 34, height: 34, margin: 'auto' }}></div>
-                <p style={{ marginTop: 12, color: '#A0A0A0' }}>Computing class matrix...</p>
+                <p style={{ marginTop: 12, color: '#F5D76E', fontWeight: 600 }}>Computing class matrix...</p>
               </div>
             ) : (
               <table>
